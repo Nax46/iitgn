@@ -1,16 +1,43 @@
 import { FormEvent, useState } from "react";
-import { FileText, Code, MessageSquare, Calculator, Award, Users } from "lucide-react";
+import {
+  Briefcase,
+  FileText,
+  Code,
+  MessageSquare,
+  Calculator,
+  Award,
+  Users,
+  Check,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import styles from "./Placements.module.css";
+import { cn } from "@/lib/utils";
 import LogoMarquee from "@/components/LogoMarquee";
 import { hiringPartnerLogos } from "@/data/partnerLogos";
 import { toast } from "@/components/ui/use-toast";
 
 // --- STATIC DATA SECTIONS ---
+
+const careerSupportCardStyles = [
+  "border-l-4 border-l-secondary border-t-4 border-t-secondary",
+  "border-t-4 border-t-primary",
+  "border-r-4 border-r-secondary border-t-4 border-t-secondary",
+  "border-l-4 border-l-accent border-b-4 border-b-accent",
+  "border-b-4 border-b-secondary",
+  "border-r-4 border-r-primary border-b-4 border-b-primary",
+];
+
+const careerSupportIconStyles = [
+  "bg-secondary text-secondary-foreground group-hover:bg-primary group-hover:text-primary-foreground",
+  "bg-primary text-primary-foreground group-hover:bg-secondary",
+  "bg-secondary text-secondary-foreground group-hover:scale-105",
+  "bg-accent text-accent-foreground group-hover:bg-secondary group-hover:text-secondary-foreground",
+  "bg-primary text-primary-foreground group-hover:bg-secondary",
+  "bg-secondary text-secondary-foreground group-hover:bg-accent group-hover:text-accent-foreground",
+];
 
 const careerSupport = [
   {
@@ -171,6 +198,71 @@ const Placements = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <section className="relative overflow-hidden border-b border-border pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <div className="absolute inset-0 section-muted" aria-hidden="true" />
+        <div
+          className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-secondary/15 blur-3xl motion-safe:animate-pulse"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-secondary via-primary to-accent"
+          aria-hidden="true"
+        />
+
+        <div className="container relative mx-auto px-4 lg:px-8">
+          <div className="max-w-4xl text-left">
+            <div
+              className={cn(
+                "icon-box-secondary mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl shadow-medium",
+                "motion-safe:animate-fade-up",
+                styles.delay0,
+              )}
+            >
+              <Briefcase className="h-7 w-7" aria-hidden="true" />
+            </div>
+
+            <h1 className="font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl mb-6">
+              <span className={cn("motion-safe:inline-block", styles.heroTitleLine)}>
+                Career Support &{" "}
+              </span>
+              <span
+                className={cn(
+                  "relative text-secondary motion-safe:inline-block",
+                  styles.heroTitleHighlight,
+                )}
+              >
+                Placement Assistance
+                <span
+                  className={cn(
+                    "absolute -bottom-2 left-0 h-1 w-full rounded-full bg-secondary/30",
+                    styles.heroTitleUnderline,
+                  )}
+                  aria-hidden="true"
+                />
+              </span>
+            </h1>
+
+            <p
+              className={cn(
+                "text-base leading-relaxed text-muted-foreground lg:text-xl max-w-3xl",
+                "motion-safe:animate-fade-up",
+                styles.delay300,
+              )}
+            >
+              We are committed to your career transformation. Our comprehensive career support
+              services delivered through our operating partner M/s. Futurense Technologies Pvt. Ltd.
+              ensure you graduate not just with technical skills, but with the confidence, network,
+              and readiness to succeed in competitive job markets.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-spacing">
       <HeroSection
         eyebrow="Career Services"
         title="Career Support &"
@@ -182,25 +274,40 @@ const Placements = () => {
       {/* Career Support Framework */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Our Career Support Framework
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-12 lg:mb-14">
+            <h2 className="text-display-sm mb-3">Our Career Support Framework</h2>
+            <p className="text-lead max-w-2xl mx-auto">
               Six comprehensive pillars supporting your career success
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {careerSupport.map((service, index) => (
-              <Card 
+              <Card
                 key={index}
-                className={`card-interactive animate-fade-up ${styles[`delay${index * 100}`]}`}
+                className={cn(
+                  "group h-full overflow-hidden rounded-xl border border-border bg-card shadow-soft",
+                  "transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-medium",
+                  "motion-safe:animate-fade-up",
+                  careerSupportCardStyles[index],
+                  styles[`delay${index * 100}`],
+                )}
               >
-                <CardContent className="p-6">
-                  <div className="icon-box-secondary mb-4">{service.icon}</div>
-                  <h3 className="font-serif font-semibold text-foreground mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
+                <CardContent className="p-7">
+                  <div
+                    className={cn(
+                      "mb-5 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300",
+                      careerSupportIconStyles[index],
+                    )}
+                  >
+                    {service.icon}
+                  </div>
+                  <h3 className="font-serif text-lg font-semibold text-foreground mb-3 lg:text-xl">
+                    {service.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -208,9 +315,12 @@ const Placements = () => {
         </div>
       </section>
 
-      {/* Partner Brands */}
-      <section className="py-16 lg:py-24 bg-background">
+      <section className="section-spacing section-muted border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12 lg:mb-14 motion-safe:animate-fade-in">
+            <h2 className="text-display-sm mb-3">Our Hiring Partners</h2>
+            <p className="text-lead max-w-3xl mx-auto">
+              Organizations that collaborate with IIT Gandhinagar to empower future-ready talent.
           <div className="text-center mb-12 lg:mb-16 animate-fade-in">
             <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4">
               Our Hiring Partners
@@ -244,29 +354,34 @@ const Placements = () => {
               </p>
             </div>
 
-            <Card className="card-elevated overflow-hidden animate-fade-up animation-delay-100">
+            <Card className="overflow-hidden rounded-2xl border border-border border-l-4 border-l-secondary bg-card shadow-medium motion-safe:animate-fade-up animation-delay-100 transition-all duration-300 hover:shadow-large">
               <CardContent className="p-8 lg:p-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-3">
-                  Our Program
-                </p>
-                <h3 className="text-heading-md text-foreground mb-4">
-                  {careerOutcome.program}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                  {careerOutcome.description}
-                </p>
+                <div className="mb-8 border-b border-border/70 pb-8">
+                  <p className="eyebrow mb-3">Our Program</p>
+                  <h3 className="text-heading-md text-foreground mb-4 lg:text-2xl">
+                    {careerOutcome.program}
+                  </h3>
+                  <p className="text-base leading-relaxed text-muted-foreground lg:text-lg max-w-3xl">
+                    {careerOutcome.description}
+                  </p>
+                </div>
 
-                <h4 className="text-sm font-semibold text-foreground mb-4">
+                <h4 className="font-serif text-lg font-semibold text-foreground mb-5">
                   Typical Job Roles
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {careerOutcome.roles.map((role) => (
                     <li
                       key={role}
-                      className="flex items-center gap-2.5 rounded-xl border border-border/60 bg-muted/30 px-4 py-3 text-sm text-muted-foreground transition-colors duration-300 hover:bg-muted/50 hover:border-primary/20"
+                      className="group flex items-center gap-3 rounded-xl border border-border/70 bg-muted/30 px-4 py-3.5 text-base text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/40 hover:bg-secondary/5 hover:shadow-soft"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden="true" />
-                      <span>{role}</span>
+                      <span
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors duration-300 group-hover:bg-secondary"
+                        aria-hidden="true"
+                      >
+                        <Check className="h-4 w-4" />
+                      </span>
+                      <span className="leading-snug">{role}</span>
                     </li>
                   ))}
                 </ul>
@@ -276,34 +391,37 @@ const Placements = () => {
         </div>
       </section>
 
-      {/* Placement Commitment */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <Card className="">
-              <CardContent className="p-8">
-                <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 text-center">
-                  Our Placement Commitment
-                </h2>
-                <p className="text-muted-foreground mb-6 text-center">
-                  While we do not guarantee placements, we are deeply committed to:
-                </p>
-                <div className="space-y-3">
-                  {[
-                    "100% Career Support – Every student receives dedicated career coaching",
-                    "Industry Connections – Access to our network of hiring partners and alumni",
-                    "Continuous Guidance – Support continues even after program completion",
-                    "Skill Validation – Rigorous training ensures you meet industry standards",
-                    "Confidence Building – Mock interviews and feedback until you're ready",
-                  ].map((commitment, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-5 h-5 rounded-sm bg-primary flex items-center justify-center text-primary-foreground flex-shrink-0 mt-0.5">
-                        <span className="text-[10px] font-bold">✓</span>
-                      </div>
-                      <p className="text-muted-foreground">{commitment}</p>
-                    </div>
-                  ))}
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-display-sm mb-4">Our Placement Commitment</h2>
+            <p className="text-lead mb-10">
+              While we do not guarantee placements, we are deeply committed to:
+            </p>
+            <div className="space-y-5 text-left">
+              {[
+                "100% Career Support – Every student receives dedicated career coaching",
+                "Industry Connections – Access to our network of hiring partners and alumni",
+                "Continuous Guidance – Support continues even after program completion",
+                "Skill Validation – Rigorous training ensures you meet industry standards",
+                "Confidence Building – Mock interviews and feedback until you're ready",
+              ].map((commitment, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 rounded-xl px-2 py-1 transition-colors duration-300 hover:bg-muted/40"
+                >
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft">
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <p className="text-base leading-relaxed text-muted-foreground lg:text-lg">
+                    {commitment}
+                  </p>
                 </div>
+              ))}
+            </div>
+            <p className="mt-10 font-serif text-lg font-semibold text-foreground lg:text-xl">
+              Your success is our success. We invest in your career transformation.
+            </p>
                 <p className="text-center text-foreground font-semibold mt-8">
                   We remain committed to supporting each participant through interview preparation and industry introductions.
                 </p>
@@ -351,18 +469,15 @@ const Placements = () => {
         </div>
       </section>
 
-      {/* Partner With Us Form */}
-      <section className="py-16 lg:py-24">
+      <section className="section-spacing section-muted border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 text-center">
-              Partner With Us
-            </h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+            <h2 className="text-display-sm mb-4 text-center">Partner With Us</h2>
+            <p className="text-lead mb-10 text-center">
               Are you a freelancer or professional looking to contribute to our programs? Join our network of industry experts.
             </p>
-            <Card className="">
-              <CardContent className="p-8">
+            <Card className="rounded-2xl border border-border shadow-medium">
+              <CardContent className="p-8 md:p-10">
                 <form className="space-y-6" onSubmit={handlePartnerSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -371,7 +486,7 @@ const Placements = () => {
                         id="fullName"
                         name="fullName"
                         type="text"
-                        className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                        className="mt-1 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm"
                         required
                         placeholder="Enter your full name"
                         aria-label="Full Name"
@@ -383,7 +498,7 @@ const Placements = () => {
                         id="email"
                         name="email"
                         type="email"
-                        className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                        className="mt-1 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm"
                         required
                         placeholder="Enter your email address"
                         aria-label="Email Address"
@@ -395,7 +510,7 @@ const Placements = () => {
                     <select 
                       id="expertise"
                       name="expertise"
-                      className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm"
                       aria-label="Area of Expertise"
                       title="Select your area of expertise"
                     >
@@ -414,7 +529,7 @@ const Placements = () => {
                       id="linkedin"
                       name="linkedinUrl"
                       type="url"
-                      className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm"
                       required
                       placeholder="Enter your LinkedIn profile URL"
                       aria-label="LinkedIn Profile URL"
@@ -425,18 +540,18 @@ const Placements = () => {
                     <textarea
                       name="message"
                       rows={4}
-                      className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      className="mt-1 w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm"
                       placeholder="Tell us about your experience and how you'd like to contribute..."
                       required
                     ></textarea>
                   </div>
                   <Button
                     type="submit"
-                    variant="cta"
-                    className="w-full py-3 text-sm font-semibold"
+                    variant="bare"
+                    className="btn-swap-secondary w-full py-6"
                     disabled={isSubmittingPartnerForm}
                   >
-                    {isSubmittingPartnerForm ? "Submitting..." : "Submit Application"}
+                    {isSubmittingPartnerForm ? "Submitting..." : "Submit"}
                   </Button>
                   {partnerFormFeedback && (
                     <p

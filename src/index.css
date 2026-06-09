@@ -308,9 +308,32 @@
   .icon-box-secondary {
     @apply flex h-10 w-10 items-center justify-center rounded-sm bg-secondary text-secondary-foreground;
   }
+
+  .contact-card-interactive {
+    @apply rounded-xl border border-border bg-card shadow-soft
+      transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-medium;
+  }
 }
 
 @layer utilities {
+  /* Group 1: dark navy bg + white text → hover/click: white bg + dark navy text */
+  .btn-swap-secondary {
+    @apply !rounded-full !border !border-primary !bg-primary !text-white shadow-medium no-underline
+      transition-all duration-300
+      hover:!bg-white hover:!text-primary hover:!border-primary hover:no-underline
+      focus-visible:!bg-white focus-visible:!text-primary focus-visible:!border-primary
+      active:!bg-white active:!text-primary active:!border-primary;
+  }
+
+  /* Group 2: white bg + dark navy text → hover/click: dark navy bg + white text */
+  .btn-swap-outline-secondary {
+    @apply !rounded-full !border !border-primary !bg-white !text-primary shadow-medium no-underline
+      transition-all duration-300
+      hover:!bg-primary hover:!text-white hover:!border-primary hover:no-underline
+      focus-visible:!bg-primary focus-visible:!text-white focus-visible:!border-primary
+      active:!bg-primary active:!text-white active:!border-primary;
+  }
+
   .no-scrollbar {
     -ms-overflow-style: none;
   }
