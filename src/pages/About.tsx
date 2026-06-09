@@ -9,102 +9,132 @@ import {
   Home,
   Briefcase,
   Eye,
-  Rocket,
-  Sparkles,
-  Zap,
+  BookOpen,
+  Handshake,
+  FlaskConical,
+  Cpu,
   Network,
+  Play,
 } from "lucide-react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Board from "@/components/Board";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import styles from "./About.module.css";
 
-/* DATA ARRAYS */
 const missions = [
   {
-    icon: <Award className="w-6 h-6" />,
-    title: "Accelerate Talent for Future Technologies",
+    icon: <GraduationCap className="w-5 h-5" />,
+    title: "Prepare Professionals for Emerging Fields",
     description:
-      "Develop immediately deployable learners for next-generation fields such as AI, Generative AI, Agentic AI, and Intelligent Automation, ensuring they are industry-ready from day one.",
+      "Deliver rigorous training in AI, data science, and related disciplines so graduates can apply current methods with confidence in industry settings.",
   },
   {
-    icon: <Users className="w-6 h-6" />,
-    title: "Build High-Impact Career Pathways",
+    icon: <Users className="w-5 h-5" />,
+    title: "Support Career Transitions",
     description:
-      "Enable meaningful career transitions through rigorous training, mentorship, and structured placement support.",
+      "Offer structured mentorship, project reviews, and placement coordination for participants moving into new technical roles.",
   },
   {
-    icon: <Target className="w-6 h-6" />,
-    title: "Advance Research-Informed Learning",
+    icon: <BookOpen className="w-5 h-5" />,
+    title: "Connect Research with Practice",
     description:
-      "Integrate IIT Gandhinagar’s academic and research strengths into applied training for real-world impact.",
+      "Draw on IIT Gandhinagar's faculty expertise and research culture to inform curriculum design and capstone work.",
   },
   {
-    icon: <Shield className="w-6 h-6" />,
-    title: "Nurture Innovation and Problem-Solving",
+    icon: <Shield className="w-5 h-5" />,
+    title: "Uphold Ethical Standards",
     description:
-      "Develop creative, ethical, and scalable solutions to real-world challenges through hands-on, project-driven learning.",
+      "Emphasise responsible development of AI systems, data governance, and professional conduct throughout the programme.",
   },
 ];
 
 const whyChooseUs = [
   {
-    title: "IIT Gandhinagar Pedigree",
+    icon: <Award className="w-5 h-5" />,
+    title: "IIT Gandhinagar Credential",
     description:
-      "Benefit from the academic excellence, research culture, and innovation ecosystem of one of India's premier institutes.",
+      "Programmes are offered under the aegis of IIT Gandhinagar, with academic oversight from institute faculty and leadership.",
   },
   {
-    title: "Industry-Academia Bridge",
+    icon: <Handshake className="w-5 h-5" />,
+    title: "Industry-Aligned Curriculum",
     description:
-      "Our programs are co-designed with industry leaders, ensuring curriculum relevance and employability.",
+      "Course content is developed with input from practitioners so that labs and projects reflect workplace expectations.",
   },
   {
-    title: "Applied Learning Focus",
+    icon: <FlaskConical className="w-5 h-5" />,
+    title: "Applied Learning Hours",
     description:
-      "60% of program hours devoted to hands-on labs, projects, capstones, and real-world problem-solving.",
+      "A substantial share of contact hours is devoted to laboratories, projects, and capstones rather than lecture-only delivery.",
   },
   {
-    title: "Emerging Technology Specialization",
+    icon: <Cpu className="w-5 h-5" />,
+    title: "Focus on AI and Agentic Systems",
     description:
-      "Deep focus on Generative AI, Agentic AI, LLMs, multi-agent systems, MLOps, and production AI engineering.",
+      "The PG Diploma concentrates on AI-ML, large language models, multi-agent workflows, and production deployment practices.",
   },
   {
-    title: "Residential Immersion",
+    icon: <Home className="w-5 h-5" />,
+    title: "Residential Campus Experience",
     description:
-      "Six-month intensive, on-campus programs creating a collaborative learning environment and peer network.",
+      "Participants live on campus for six months, with access to institute facilities and a cohort-based learning environment.",
   },
   {
-    title: "Career Readiness",
+    icon: <Briefcase className="w-5 h-5" />,
+    title: "Placement Coordination",
     description:
-      "Comprehensive placement support including resume building, mock interviews, certification prep, and industry connections.",
+      "Career support includes resume review, interview preparation, and introductions through CAA and partner organisations.",
   },
 ];
 
 const advantageHighlights = [
   {
-    icon: <Award className="w-6 h-6 text-primary" />,
-    title: "IIT Credential",
+    icon: <Award className="w-5 h-5" />,
+    title: "PG Diploma from IIT Gandhinagar",
     description:
-      "Post graduate Diploma jointly awarded by IIT Gandhinagar and CAA with Executive Alumni Status",
+      "Successful participants receive a Post Graduate Diploma awarded through the institute's competency development framework.",
   },
   {
-    icon: <Building2 className="w-6 h-6 text-primary" />,
-    title: "Residential Experience",
+    icon: <Building2 className="w-5 h-5" />,
+    title: "On-Campus Residence",
     description:
-      "Live on campus with access to labs, library, maker spaces, and the holistic IIT experience.",
+      "Residential stay provides access to laboratories, the library, maker spaces, and the wider IITGN academic community.",
   },
   {
-    icon: <Target className="w-6 h-6 text-primary" />,
-    title: "Industry Integration",
+    icon: <Target className="w-5 h-5" />,
+    title: "Industry Mentorship",
     description:
-      "Fortune-500 mentors, design partners, and project reviews to align outcomes with real-world expectations.",
+      "Practitioners contribute to project reviews and guest sessions, helping align outcomes with hiring expectations.",
   },
   {
-    icon: <Shield className="w-6 h-6 text-primary" />,
-    title: "Placement Cell Access",
+    icon: <Network className="w-5 h-5" />,
+    title: "Career Services Network",
     description:
-      "Shared IITGN CDF x Futurense placement ecosystem with interview prep, mentor hours, and curated opportunities.",
+      "Placement coordination is supported by CAA and Futurense, with interview preparation and recruiter introductions.",
+  },
+];
+
+const commitments = [
+  {
+    title: "Academic Integrity",
+    desc: "Maintain clear standards for assessment, attendance, and programme completion.",
+  },
+  {
+    title: "Student Support",
+    desc: "Provide academic guidance, career counselling, and access to institute resources throughout the programme.",
+  },
+  {
+    title: "Curriculum Relevance",
+    desc: "Review course content regularly in consultation with faculty and industry advisors.",
+  },
+  {
+    title: "Responsible Technology",
+    desc: "Address data ethics, model governance, and safe deployment in teaching and project work.",
+  },
+  {
+    title: "Public Purpose",
+    desc: "Contribute to national skill development goals through rigorous, accessible professional education.",
   },
 ];
 
@@ -113,324 +143,257 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* -------------------------------------------------------------------- */}
-      {/* ⭐ ENHANCED HERO SECTION ⭐ */}
-      {/* -------------------------------------------------------------------- */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 section-muted border-b border-border overflow-hidden">
+      {/* Hero — Institutional Profile */}
+      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 section-muted border-b border-border overflow-hidden">
         <div className="container relative mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center animate-fade-up">
             <p className="eyebrow mb-4">Institutional Profile</p>
             <div className="icon-box mx-auto mb-6">
-              <Building2 className="w-5 h-5" />
+              <Building2 className="w-5 h-5" aria-hidden="true" />
             </div>
-
             <h1 className="text-display-md mb-5">
               About{" "}
-              <span className="text-secondary">
-                IIT Gandhinagar Competency Development Foundation
-              </span>
+              <span className="text-secondary">IIT Gandhinagar Competency Development Foundation</span>
             </h1>
-
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              IITGN CDF is a Section 8 initiative that transforms IIT
-              Gandhinagar's research excellence into immersive residential
-              programs, aligning talent with next-generation industry demands.
+              IITGN CDF is a Section 8 company under IIT Gandhinagar, established to offer residential
+              professional programmes that link institute academics with industry practice.
             </p>
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------------- */}
-      {/* ⭐ ENHANCED DESCRIPTION SECTION ⭐ */}
-      {/* -------------------------------------------------------------------- */}
-      <section className="py-16 lg:py-20">
+      {/* Editorial profile */}
+      <section className="py-14 lg:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <Card className="max-w-4xl mx-auto border bg-card ">
-            <CardContent className="p-8 lg:p-12">
-              <div className="space-y-6 text-base lg:text-lg leading-relaxed text-muted-foreground">
-                <p>
-                The IIT Gandhinagar Competency Development Foundation (IITGN CDF) is a Section 8 company established under
-                 the aegis of the Indian Institute of Technology Gandhinagar to strengthen the bridge between academic excellence and industry application.
-                </p>
-                <p>
-                IITGN CDF is envisioned as IIT Gandhinagar’s dedicated platform for advancing professional and technical competencies through innovative, hands-on, and industry-aligned programs. 
-                These programs,
-                 pioneered by IITGN CDF and run by Competency Advancement Academy (CAA), bring together the institute’s academic rigor, research expertise, and a strong network of industry collaborators to create meaningful pathways for upskilling and talent development.
-                </p>
-                <p>
-                By offering intensive, residential, and application-driven programs in cutting-edge technology domains such as Artificial Intelligence, 
-                Data Science, Cloud Computing, Cybersecurity, Robotics, and Semiconductor Manufacturing, CDF aims to equip learners with the practical skills, depth of knowledge,
-                 and confidence to meet the evolving needs of modern industries. Guided by IIT Gandhinagar’s values of integrity, innovation, and impact, CDF is committed to shaping the next generation of skilled professionals who can contribute effectively to India’s technological advancement and global competitiveness.
+          <div className={`${styles.editorial} animate-fade-up`}>
+            <p>
+              The IIT Gandhinagar Competency Development Foundation (IITGN CDF) was set up under the
+              Indian Institute of Technology Gandhinagar to extend the institute&apos;s teaching and
+              research strengths into professional education for working graduates and early-career
+              professionals.
+            </p>
+            <p>
+              Programmes are delivered through the Competency Advancement Academy (CAA) in partnership
+              with IITGN CDF. They combine residential instruction, laboratory work, and capstone projects
+              with input from faculty and industry practitioners.
+            </p>
+            <p>
+              Current offerings include intensive programmes in Artificial Intelligence, Data Science,
+              Cloud Computing, Cybersecurity, Robotics, and Semiconductor Manufacturing. IITGN CDF
+              operates according to the institute&apos;s values of integrity, rigour, and service to
+              society.
+            </p>
+          </div>
+        </div>
+      </section>
 
+      {/* Leadership message */}
+      <section className="py-14 lg:py-20 section-muted">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-12 animate-fade-up">
+            <p className="eyebrow mb-3">Leadership</p>
+            <h2 className="text-display-sm mb-3">Message from the Director</h2>
+            <p className="text-lead">
+              Prof Rajat Moona, Director of IIT Gandhinagar and Chairman of IITGN CDF, on the
+              foundation&apos;s role in professional education.
+            </p>
+          </div>
+
+          <div className={`${styles.leadershipFrame} animate-fade-up animation-delay-100`}>
+            <iframe
+              className={styles.leadershipVideo}
+              src="https://www.youtube.com/embed/_FsoQVOXw20"
+              title="Message from Prof Rajat Moona, Director, IIT Gandhinagar"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <div className={styles.leadershipCaption}>
+              <p className="font-serif font-semibold text-foreground">Prof Rajat Moona</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Director, IIT Gandhinagar · Chairman, IITGN Competency Development Foundation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Campus experience */}
+      <section className="py-14 lg:py-20 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-12 animate-fade-up">
+            <p className="eyebrow mb-3">Campus</p>
+            <h2 className="text-display-sm mb-3">Life at IIT Gandhinagar</h2>
+            <p className="text-lead">
+              Residential programmes take place on the IITGN campus in Palaj, Gandhinagar.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <article className={`${styles.campusCard} animate-fade-up`}>
+              <iframe
+                className={styles.campusMedia}
+                src="https://www.youtube.com/embed/fK9y8wiHUsk"
+                title="IIT Gandhinagar campus tour"
+                allowFullScreen
+              />
+              <div className={styles.campusBody}>
+                <div className="flex items-center gap-2 text-secondary mb-2">
+                  <Play className="w-4 h-4" aria-hidden="true" />
+                  <span className="text-xs font-semibold uppercase tracking-wide">Campus Tour</span>
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-foreground">
+                  IIT Gandhinagar Campus
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                  An overview of academic buildings, residential facilities, and the riverfront
+                  setting of the institute.
                 </p>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+            </article>
 
-      {/* -------------------------------------------------------------------- */}
-      {/* ⭐ BELOW THIS POINT → EVERYTHING FROM SECOND FILE (UNCHANGED) ⭐ */}
-      {/* -------------------------------------------------------------------- */}
-
-      {/* Director & Leadership Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
-              <Sparkles className="w-4 h-4" />
-              Leadership
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Messages from{" "}
-              <span className="text-secondary">
-                Chairman, Director and CEO
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear from our leadership about the vision and mission of IITGN CDF
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-  {/* Director Video */}
-  <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30">
-    <div className="relative">
-      <CardContent className="p-0 aspect-video rounded-t-lg overflow-hidden">
-        <iframe
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/_FsoQVOXw20"
-          title="Director Video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </CardContent>
-    </div>
-  </Card>
-</div>
-
-        </div>
-      </section>
-
-      {/* Videos */}
-      <section className="py-16 lg:py-24 section-muted border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
-              <Sparkles className="w-4 h-4" />
-              Campus Experience
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Experience{" "}
-              <span className="text-secondary">
-                IITGN
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover our world-class campus and vibrant student life
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {/* Campus Tour */}
-            <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
-              <div className="relative">
-                <CardContent className="p-0 aspect-video rounded-t-lg overflow-hidden">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/fK9y8wiHUsk"
-                    allowFullScreen
-                    title="IIT Gandhinagar Campus Tour"
-                  ></iframe>
-                </CardContent>
-                <div className="absolute top-4 right-4 bg-black/60  rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Eye className="w-4 h-4 text-white" />
+            <article className={`${styles.campusCard} animate-fade-up animation-delay-100`}>
+              <div className={styles.campusPlaceholder}>
+                <div className="text-center px-6">
+                  <div className="icon-box-secondary mx-auto mb-4">
+                    <Users className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">Student life video forthcoming</p>
                 </div>
               </div>
-              <CardHeader className="p-6 bg-card/95">
-                <CardTitle className="text-xl font-bold text-foreground">
-                  IIT Gandhinagar Campus Tour
-                </CardTitle>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Explore our cutting-edge campus and culture
+              <div className={styles.campusBody}>
+                <div className="flex items-center gap-2 text-secondary mb-2">
+                  <Users className="w-4 h-4" aria-hidden="true" />
+                  <span className="text-xs font-semibold uppercase tracking-wide">Community</span>
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-foreground">
+                  Residential Learning Environment
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                  Participants join a cohort on campus, with access to institute clubs, sports
+                  facilities, and cultural activities.
                 </p>
-              </CardHeader>
-            </Card>
-
-            {/* Student Life */}
-            <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
-              <div className="relative">
-                <CardContent className="p-0 aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center rounded-t-lg">
-                  <div className="text-center p-8">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="w-8 h-8 text-primary" />
-                    </div>
-                    <p className="text-muted-foreground font-medium">Video coming soon</p>
-                  </div>
-                </CardContent>
               </div>
-              <CardHeader className="p-6 bg-card/95">
-                <CardTitle className="text-xl font-bold text-foreground">
-                  Student Life at IIT Gandhinagar
-                </CardTitle>
-                <p className="text-sm text-muted-foreground mt-2">
-                  A glimpse into our vibrant learning community
-                </p>
-              </CardHeader>
-            </Card>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="py-16 lg:py-24 bg-background">
+      {/* Vision */}
+      <section className="py-14 lg:py-20 section-muted">
         <div className="container mx-auto px-4 lg:px-8">
-
-          {/* Vision */}
-          <div className="text-center mb-16 lg:mb-20">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
-              <Eye className="w-10 h-10 text-primary-foreground" />
+          <div className="text-center mb-8 lg:mb-10 animate-fade-up">
+            <p className="eyebrow mb-3">Our Vision</p>
+            <div className="icon-box mx-auto mb-4">
+              <Eye className="w-5 h-5" aria-hidden="true" />
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Our Vision</h2>
-
-            <Card className="max-w-3xl mx-auto border bg-card ">
-              <CardContent className="p-8 lg:p-10">
-                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                  To create a globally recognized platform for competency-based
-                  learning, innovation, and professional excellence.
-                </p>
-              </CardContent>
-            </Card>
           </div>
+          <blockquote className={`${styles.visionQuote} animate-fade-up animation-delay-100`}>
+            <p className={styles.visionText}>
+              To establish IIT Gandhinagar as a leading centre for competency-based professional
+              education that serves industry needs and advances public understanding of technology.
+            </p>
+          </blockquote>
+        </div>
+      </section>
 
-          {/* Mission */}
-          <div className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
-              <Rocket className="w-10 h-10 text-primary-foreground" />
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Our Mission
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Four pillars guiding our commitment to excellence
+      {/* Mission */}
+      <section className="py-14 lg:py-20 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-10 lg:mb-14 animate-fade-up">
+            <p className="eyebrow mb-3">Our Mission</p>
+            <h2 className="text-display-sm mb-3">What We Set Out to Do</h2>
+            <p className="text-lead max-w-2xl mx-auto">
+              Four commitments that guide programme design and delivery at IITGN CDF.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 max-w-5xl mx-auto">
             {missions.map((mission, index) => (
-              <Card
-                key={index}
-                className="group card-interactive border-2 hover:border-primary/30 bg-card "
-                style={{ animationDelay: `${index * 100}ms` }}
+              <article
+                key={mission.title}
+                className={`${styles.missionCard} animate-fade-up`}
+                style={{ animationDelay: `${index * 80}ms` }}
               >
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mb-5 shadow-soft transition-colors">
-                    <div className="text-primary-foreground">{mission.icon}</div>
-                  </div>
-                  <h3 className="font-bold text-foreground mb-3 text-lg">
-                    {mission.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{mission.description}</p>
-                </CardContent>
-              </Card>
+                <div className={styles.missionIcon} aria-hidden="true">
+                  {mission.icon}
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                  {mission.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{mission.description}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 lg:py-24 section-muted border-b border-border">
+      {/* Why Choose CAA */}
+      <section className="py-14 lg:py-20 section-muted">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
-              <Sparkles className="w-4 h-4" />
-              Why Us
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Why Choose CAA at{" "}
-              <span className="text-secondary">
-                IITGN?
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover what makes our programs unique and transformative
+          <div className="text-center mb-10 lg:mb-14 animate-fade-up">
+            <p className="eyebrow mb-3">Programme Distinction</p>
+            <h2 className="text-display-sm mb-3">Why Choose CAA at IITGN</h2>
+            <p className="text-lead max-w-2xl mx-auto">
+              Reasons professionals select our residential programmes at IIT Gandhinagar.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-6xl mx-auto">
             {whyChooseUs.map((reason, index) => (
-              <Card
-                key={index}
-                className="group card-interactive border-2 hover:border-primary/30 bg-card "
-                style={{ animationDelay: `${index * 100}ms` }}
+              <article
+                key={reason.title}
+                className={`${styles.featureCard} animate-fade-up`}
+                style={{ animationDelay: `${index * 60}ms` }}
               >
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary shadow-soft transition-colors">
-                    <Zap className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-3 text-lg">
-                    {reason.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
-                </CardContent>
-              </Card>
+                <div className={styles.featureIcon} aria-hidden="true">
+                  {reason.icon}
+                </div>
+                <h3 className="font-serif text-base font-semibold text-foreground mb-2">
+                  {reason.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Board */}
-      <section className="bg-muted/30">
-        <Board />
-      </section>
+      <Board />
 
-      {/* IIT Advantage */}
-      <section className="py-20 lg:py-28 bg-background">
+      {/* IIT Advantage — unified panel */}
+      <section className="py-14 lg:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16 lg:mb-20">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
-              <Award className="w-4 h-4" />
-              Exclusive Benefits
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              The{" "}
-              <span className="text-secondary">
-                IIT Advantage
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experience the unique benefits of learning at IIT Gandhinagar
+          <div className="text-center mb-10 lg:mb-12 animate-fade-up">
+            <p className="eyebrow mb-3">Participant Benefits</p>
+            <h2 className="text-display-sm mb-3">The IIT Advantage</h2>
+            <p className="text-lead max-w-2xl mx-auto">
+              What participants gain from studying on the IIT Gandhinagar campus.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left */}
-            <div className="space-y-4 lg:space-y-6">
-              {advantageHighlights.map((highlight, index) => (
-                <div
-                  key={highlight.title}
-                  className="group flex items-start gap-4 rounded-sm border-2 border-border/80 bg-card  p-5 lg:p-6 border-border hover:border-secondary/40 transition-colors"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors shadow-soft">
-                    <div className="group-hover:text-primary-foreground">{highlight.icon}</div>
+          <div className={`${styles.advantagePanel} max-w-5xl mx-auto animate-fade-up animation-delay-100`}>
+            <div className={styles.advantageList}>
+              {advantageHighlights.map((highlight) => (
+                <div key={highlight.title} className={styles.advantageItem}>
+                  <div className={styles.advantageItemIcon} aria-hidden="true">
+                    {highlight.icon}
                   </div>
-
-                  <div className="flex-1">
-                    <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-2">{highlight.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{highlight.description}</p>
+                  <div>
+                    <h3 className="font-serif text-base font-semibold text-foreground mb-1">
+                      {highlight.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {highlight.description}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Right */}
-            <div className="rounded-sm overflow-hidden shadow-xl border-2 border-border/50 hover:border-primary/30 transition-all">
+            <div className={styles.advantageImageWrap}>
               <img
                 src="/images/IIT.avif"
-                alt="IIT Gandhinagar Classroom"
-                className="w-full h-full object-cover"
+                alt="Classroom and learning spaces at IIT Gandhinagar"
                 loading="lazy"
               />
             </div>
@@ -438,74 +401,28 @@ const About = () => {
         </div>
       </section>
 
-      {/* Commitment */}
-      <section className="py-16 lg:py-24 section-muted border-b border-border">
+      {/* Commitment to excellence — values timeline */}
+      <section className="py-14 lg:py-20 section-muted">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12 lg:mb-16">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
-                <Heart className="w-10 h-10 text-primary-foreground" />
-              </div>
-
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Our Commitment to{" "}
-                <span className="text-secondary">
-                  Excellence
-                </span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Core values that drive everything we do
-              </p>
+          <div className="text-center mb-10 lg:mb-12 animate-fade-up">
+            <p className="eyebrow mb-3">Our Values</p>
+            <div className="icon-box mx-auto mb-4">
+              <Heart className="w-5 h-5" aria-hidden="true" />
             </div>
+            <h2 className="text-display-sm mb-3">Commitment to Excellence</h2>
+            <p className="text-lead max-w-2xl mx-auto">
+              Principles that inform academic standards and student support at IITGN CDF.
+            </p>
+          </div>
 
-            <Card className="border-2 bg-card ">
-              <CardContent className="p-8 lg:p-10">
-                <div className="space-y-3 lg:space-y-4">
-                  {[
-                    {
-                      title: "Academic Integrity",
-                      desc: "Maintaining The Highest Standards of Teaching and Evaluation",
-                      icon: <Shield className="w-5 h-5" />,
-                    },
-                    {
-                      title: "Student Success",
-                      desc: "Providing Mentorship, Career Guidance, and Lifelong Learning Opportunities",
-                      icon: <Users className="w-5 h-5" />,
-                    },
-                    {
-                      title: "Innovation Leadership",
-                      desc: "Staying At The Forefront of Emerging Technologies and Pedagogical Methods",
-                      icon: <Zap className="w-5 h-5" />,
-                    },
-                    {
-                      title: "Ethical Responsibility",
-                      desc: "Promoting Responsible AI Development and Data Ethics",
-                      icon: <Target className="w-5 h-5" />,
-                    },
-                    {
-                      title: "Social Impact",
-                      desc: "Contributing to National Skill Development and Technological Advancement",
-                      icon: <Award className="w-5 h-5" />,
-                    },
-                  ].map((commitment, index) => (
-                    <div
-                      key={index}
-                      className="group flex items-start gap-4 p-5 lg:p-6 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/30 transition-all hover:shadow-md bg-card"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-primary-foreground transition-colors shadow-soft flex-shrink-0">
-                        {commitment.icon}
-                      </div>
-
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-foreground mb-1">{commitment.title}</h4>
-                        <p className="text-muted-foreground leading-relaxed">{commitment.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          <div className={`${styles.valuesStack} animate-fade-up animation-delay-100`}>
+            {commitments.map((item) => (
+              <div key={item.title} className={styles.valueItem}>
+                <span className={styles.valueDot} aria-hidden="true" />
+                <h3 className={styles.valueTitle}>{item.title}</h3>
+                <p className={styles.valueDesc}>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
