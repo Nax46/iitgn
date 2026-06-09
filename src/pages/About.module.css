@@ -1,0 +1,306 @@
+/* About page — institutional section layouts */
+
+.editorial {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  border-left: 3px solid hsl(var(--secondary));
+}
+
+.editorial p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: hsl(var(--muted-foreground));
+}
+
+.editorial p + p {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .editorial {
+    padding-left: 1.5rem;
+  }
+
+  .editorial p {
+    font-size: 1.125rem;
+  }
+}
+
+.leadershipFrame {
+  max-width: 56rem;
+  margin: 0 auto;
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  border-top: 3px solid hsl(var(--accent));
+}
+
+.leadershipVideo {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: 0;
+  display: block;
+  background: hsl(var(--primary));
+}
+
+.leadershipCaption {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid hsl(var(--border) / 0.5);
+}
+
+.visionQuote {
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(180deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.visionQuote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: hsl(var(--accent) / 0.45);
+}
+
+.visionText {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.375rem;
+  line-height: 1.55;
+  color: hsl(var(--foreground));
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .visionText {
+    font-size: 1.5rem;
+  }
+}
+
+.missionCard {
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.5rem 1.625rem;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  height: 100%;
+}
+
+.missionCard:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.missionIcon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.featureCard {
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.375rem;
+  border-left: 3px solid hsl(var(--secondary) / 0.35);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  height: 100%;
+}
+
+.featureCard:hover {
+  border-left-color: hsl(var(--secondary));
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.featureIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.375rem;
+  background: hsl(var(--muted));
+  color: hsl(var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.875rem;
+}
+
+.campusCard {
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.campusCard:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-3px);
+}
+
+.campusMedia {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border: 0;
+  display: block;
+  background: hsl(var(--muted));
+}
+
+.campusPlaceholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, hsl(var(--muted)) 0%, hsl(210 22% 92%) 100%);
+}
+
+.campusBody {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.advantagePanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .advantagePanel {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch;
+  }
+}
+
+.advantageList {
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .advantageList {
+    padding: 2rem 2rem 2rem 2.25rem;
+    gap: 1.5rem;
+  }
+}
+
+.advantageItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid hsl(var(--border) / 0.55);
+}
+
+.advantageItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.advantageItemIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--muted));
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.advantageImageWrap {
+  position: relative;
+  min-height: 16rem;
+  background: hsl(var(--primary));
+}
+
+.advantageImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 16rem;
+}
+
+@media (min-width: 1024px) {
+  .advantageImageWrap {
+    min-height: 100%;
+  }
+}
+
+.valuesStack {
+  max-width: 40rem;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.valuesStack::before {
+  content: "";
+  position: absolute;
+  left: 0.4375rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--accent)) 0%,
+    hsl(var(--secondary) / 0.5) 100%
+  );
+  border-radius: 1px;
+}
+
+.valueItem {
+  position: relative;
+  padding: 0 0 2rem 1.75rem;
+}
+
+.valueItem:last-child {
+  padding-bottom: 0;
+}
+
+.valueDot {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.35rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: hsl(var(--accent));
+  box-shadow: 0 0 0 4px hsl(var(--background));
+}
+
+.valueTitle {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.35rem;
+}
+
+.valueDesc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: hsl(var(--muted-foreground));
+}

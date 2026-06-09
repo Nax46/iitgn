@@ -30,9 +30,9 @@ const resolveVariant = (variant?: CTAButton["variant"]): CTAStyleVariant => {
 const CTABanner = ({ title, description, buttons, className = "" }: CTABannerProps) => {
   return (
     <div className={cnSection(className)}>
-      <p className="eyebrow-light mb-3">Admissions</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90 mb-3">Admissions</p>
       <h2 className="font-serif text-2xl lg:text-3xl font-semibold text-white mb-4">{title}</h2>
-      <p className="text-base lg:text-lg text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
+      <p className="text-base lg:text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
         {description}
       </p>
       <div className="flex flex-wrap justify-center gap-3">

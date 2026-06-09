@@ -48,7 +48,7 @@ const careerSupport = [
 const careerOutcome = {
   program: "PG Diploma in AI-ML & Agentic AI Engineering",
   description:
-    "Graduates are prepared for high-demand roles across the AI-ML and Agentic AI ecosystem — from building intelligent agents to deploying production ML systems.",
+    "Graduates are prepared for roles across the AI-ML and Agentic AI field, from building intelligent agents to deploying production ML systems.",
   roles: [
     "AI Engineer / Machine Learning Engineer",
     "Generative AI Engineer",
@@ -175,7 +175,7 @@ const Placements = () => {
         eyebrow="Career Services"
         title="Career Support &"
         highlight="Placement Assistance"
-        description="Comprehensive career support delivered through our operating partner, M/s. Futurense Technologies Pvt. Ltd. — ensuring you graduate with technical depth, professional confidence, and industry readiness."
+        description="Career support delivered through M/s. Futurense Technologies Pvt. Ltd., the operating partner for admissions and placement coordination at IITGN CDF."
         align="left"
       />
 
@@ -216,7 +216,7 @@ const Placements = () => {
               Our Hiring Partners
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Organizations that collaborate with IIT Gandhinagar to empower future-ready talent.
+              Organizations that recruit and mentor graduates from IIT Gandhinagar programmes.
             </p>
           </div>
 
@@ -305,7 +305,7 @@ const Placements = () => {
                   ))}
                 </div>
                 <p className="text-center text-foreground font-semibold mt-8">
-                  Your success is our success. We invest in your career transformation.
+                  We remain committed to supporting each participant through interview preparation and industry introductions.
                 </p>
               </CardContent>
             </Card>
@@ -333,7 +333,7 @@ const Placements = () => {
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
                       <span className="text-xs font-bold">•</span>
                     </div>
-                    <p className="text-foreground font-medium">90%+ Attendance — Consistent attendance required</p>
+                    <p className="text-foreground font-medium">90%+ attendance throughout the programme</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">

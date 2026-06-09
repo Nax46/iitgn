@@ -140,7 +140,7 @@ const whyResidential = [
   },
   {
     icon: <GraduationCap className="w-6 h-6" />,
-    title: "Immersive Experience",
+    title: "Campus Experience",
     description: "24/7 access to labs, faculty, and resources accelerates your learning journey.",
   },
   {
@@ -165,7 +165,7 @@ const CampusLife = () => {
         icon={<Sparkles className="w-16 h-16 text-primary mx-auto" aria-hidden="true" />}
         title="Experience"
         highlight="IIT Gandhinagar"
-        description="Live, build, and collaborate on a riverfront campus designed for maker culture—labs that run late, festivals that light up the quad, and sports arenas that keep energy high."
+        description="Live, study, and collaborate on IIT Gandhinagar's riverfront campus: well-equipped laboratories, student-led festivals, and sports facilities that support a full residential experience."
         backgroundImage="/images/ExperienceBackground.png"
       />
 

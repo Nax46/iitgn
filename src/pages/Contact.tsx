@@ -26,6 +26,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
 import HeroSection from "@/components/HeroSection";
+import { iitgnSocialLinks } from "@/data/socialLinks";
+import { applicationFormLinkProps } from "@/data/applicationForm";
+import CtaArrow from "@/components/CtaArrow";
 
 const CONTACT_PROGRAM_OPTIONS = [
   {
@@ -548,47 +551,40 @@ const Contact = () => {
             <p className="text-lg text-muted-foreground text-center mb-8">
               Follow us on social media for the latest updates, program announcements, and success stories.
             </p>
-            <div className="flex justify-center space-x-6">
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on LinkedIn"
-                aria-label="Visit our LinkedIn profile"
-              >
-                <Linkedin className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Twitter"
-                aria-label="Visit our Twitter profile"
-              >
-                <Twitter className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Facebook"
-                aria-label="Visit our Facebook page"
-              >
-                <Facebook className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Instagram"
-                aria-label="Visit our Instagram profile"
-              >
-                <Instagram className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Subscribe to our YouTube channel"
-                aria-label="Visit our YouTube channel"
-              >
-                <Youtube className="w-6 h-6 text-primary-foreground" />
-              </a>
+            <div className="flex flex-wrap justify-center gap-4" role="list" aria-label="IIT Gandhinagar social media">
+              {iitgnSocialLinks.map((link) => {
+                const icons = { linkedin: Linkedin, twitter: Twitter, facebook: Facebook, instagram: Instagram, youtube: Youtube };
+                const Icon = icons[link.platform];
+
+                if (!link.href) {
+                  return (
+                    <span
+                      key={link.platform}
+                      role="listitem"
+                      className="w-12 h-12 bg-primary/30 rounded-full flex items-center justify-center cursor-not-allowed"
+                      aria-label={`${link.label} (unavailable)`}
+                      title={`${link.label} (unavailable)`}
+                    >
+                      <Icon className="w-6 h-6 text-primary-foreground/40" aria-hidden="true" />
+                    </span>
+                  );
+                }
+
+                return (
+                  <a
+                    key={link.platform}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    title={link.label}
+                    aria-label={link.label}
+                  >
+                    <Icon className="w-6 h-6 text-primary-foreground" aria-hidden="true" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -602,15 +598,20 @@ const Contact = () => {
               Quick Links
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <Button asChild variant="ctaOutline" className="w-full">
+                <a {...applicationFormLinkProps} className="hover:no-underline">
+                  Apply Now
+                  <CtaArrow />
+                </a>
+              </Button>
               {[
-                { to: "/admissions", text: "Apply Now" },
                 { to: "/programs", text: "View Programs" },
                 { to: "/admissions", text: "Check Eligibility" },
                 { to: "/placements", text: "Career Support" },
                 { to: "/faq", text: "FAQ" },
                 { to: "/about", text: "About Us" },
-              ].map((link, index) => (
-                <Button key={index} asChild variant="ctaOutline" className="w-full">
+              ].map((link) => (
+                <Button key={link.to + link.text} asChild variant="ctaOutline" className="w-full">
                   <Link to={link.to}>{link.text}</Link>
                 </Button>
               ))}

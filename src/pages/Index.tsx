@@ -11,6 +11,8 @@ import { hiringPartnerLogos } from "@/data/partnerLogos";
 
 import ProgramHighlights from "../components/ProgramHighlights";
 import BrochureDownloadButton from "@/components/BrochureDownloadButton";
+import CtaArrow from "@/components/CtaArrow";
+import { applicationFormLinkProps } from "@/data/applicationForm";
 
 const Index = () => {
   return (
@@ -19,8 +21,14 @@ const Index = () => {
 
       <section className="relative border-b border-border overflow-hidden">
         <CarouselBackground />
-        <div className="absolute inset-0 bg-primary/75" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/70" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-[hsl(210_58%_32%_/0.28)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-primary/50 via-secondary/25 to-primary/40"
+          aria-hidden="true"
+        />
 
         <div className="container relative mx-auto px-4 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl text-white animate-fade-up">
@@ -30,27 +38,25 @@ const Index = () => {
               PG Diploma in AI-ML &amp; Agentic AI Engineering
             </h1>
 
-            <p className="text-base lg:text-lg text-white/90 leading-relaxed mb-8 max-w-2xl">
-              An immersive residential program by the IITGN Competency Development Foundation —
-              designed to prepare professionals for leadership roles in AI-ML and Agentic AI.
+            <p className="text-base lg:text-lg text-white/95 leading-relaxed mb-8 max-w-2xl drop-shadow-sm">
+              A six-month residential PG Diploma offered by the IITGN Competency Development Foundation,
+              preparing working professionals for senior roles in AI-ML and Agentic AI engineering.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-10">
               <Button asChild variant="ctaOnDark" size="lg">
-                <Link to="/admissions" className="group flex items-center gap-2">
-                  <span>Apply Now</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                <a {...applicationFormLinkProps} className="hover:no-underline">
+                  Apply Now
+                  <CtaArrow />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="ctaOutlineOnDark">
+                <Link to="/programs" className="hover:no-underline">
+                  Program Details
+                  <CtaArrow />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="ctaOutline" className="border-white/40 text-white hover:bg-white/10 hover:text-white">
-                <Link to="/programs">Program Details</Link>
-              </Button>
-              <BrochureDownloadButton
-                size="lg"
-                variant="ctaOutline"
-                className="border-white/40 text-white hover:bg-white/10 hover:text-white"
-                label="Download Brochure"
-              />
+              <BrochureDownloadButton premium size="lg" variant="ctaOutlineOnDark" />
             </div>
 
             <div className="border-t border-white/20 pt-6 space-y-2 text-sm lg:text-base text-white/85">
@@ -69,9 +75,7 @@ const Index = () => {
 
       <ProgramHighlights />
 
-      <section className="section-muted border-b border-border">
-        <Board />
-      </section>
+      <Board />
 
       <section className="section-spacing border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
@@ -79,7 +83,7 @@ const Index = () => {
             <p className="eyebrow mb-2">Industry Network</p>
             <h2 className="text-display-sm mb-3">Our Hiring Partners</h2>
             <p className="text-lead">
-              Organizations that collaborate with IIT Gandhinagar CDF to develop placement-ready talent.
+              Organisations that recruit and mentor graduates from IITGN CDF programmes.
             </p>
           </div>
 
@@ -95,22 +99,27 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="section-spacing">
+      <section className="py-12 lg:py-16 border-t border-border bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="section-navy px-6 py-10 lg:px-12 lg:py-14 text-center border border-primary/20">
-            <p className="eyebrow-light mb-3">Career Development</p>
-            <h2 className="font-serif text-2xl lg:text-3xl font-semibold text-white mb-4">
-              Advance Your Professional Trajectory
-            </h2>
-            <p className="text-base lg:text-lg text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Build expertise aligned with roles such as AI Engineer, Generative AI Engineer,
-              MLOps Engineer, and Agentic AI Systems Developer.
+          <div className="section-career-showcase relative max-w-5xl mx-auto px-6 py-8 sm:px-10 sm:py-10 lg:px-14 lg:py-11 text-center">
+            <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+              Career Development
             </p>
-            <Button asChild size="lg" variant="ctaOnDark">
-              <Link to="/admissions" className="flex items-center justify-center gap-2">
+            <h2 className="relative font-serif text-2xl sm:text-3xl font-semibold text-white mb-3">
+              Roles Our Graduates Pursue
+            </h2>
+            <p className="relative text-base sm:text-lg text-white/90 mb-7 max-w-2xl mx-auto leading-relaxed">
+              Graduates advance into roles such as AI Engineer, Generative AI Engineer, MLOps Engineer,
+              and Agentic AI Systems Developer, supported by structured placement assistance through CAA.
+            </p>
+            <Button asChild size="lg" variant="ctaOnDark" className="relative h-11 px-7 shadow-medium">
+              <a
+                {...applicationFormLinkProps}
+                className="inline-flex items-center justify-center gap-2 hover:text-primary focus-visible:text-primary"
+              >
                 <span>Apply for Admission</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </a>
             </Button>
           </div>
         </div>
