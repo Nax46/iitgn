@@ -25,7 +25,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
-import HeroSection from "@/components/HeroSection";
 
 const CONTACT_PROGRAM_OPTIONS = [
   {
@@ -245,66 +244,54 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* --- HERO SECTION (UNIFIED STYLE) --- */}
+      {/* --- HERO SECTION --- */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center animate-fade-up">
+            <Phone className="mx-auto mb-6 h-14 w-14 text-secondary" aria-hidden="true" />
 
-            {/* ICON */}
-            <Phone className="w-16 h-16 text-primary mx-auto mb-6" />
-
-            {/* TITLE */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-[3.5rem] mb-6">
               Get in Touch with{" "}
-              <span className="text-secondary">
-                IITGN CDF
-              </span>
+              <span className="text-secondary">IITGN CDF</span>
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
+            <p className="text-lead max-w-3xl mx-auto mb-8">
               We're here to guide you through admissions, campus visits, and program fit.
               Reach us directly or browse the FAQ to move forward with confidence.
             </p>
 
-            {/* ACTION BUTTONS */}
             <div className="flex flex-wrap justify-center gap-4 mt-2">
-           <Button
-  size="lg"
-  variant="cta"
-  className="px-6"
-  onClick={() => {
-    window.open(
-      "https://mail.google.com/mail/?view=cm&fs=1&to=admission.caa@iitgn.ac.in",
-      "_blank"
-    );
-  }}
->
-  Email IITGN CDF
-</Button>
+              <Button
+                variant="bare"
+                size="lg"
+                className="btn-swap-secondary px-8"
+                onClick={() => {
+                  window.open(
+                    "https://mail.google.com/mail/?view=cm&fs=1&to=admission.caa@iitgn.ac.in",
+                    "_blank",
+                  );
+                }}
+              >
+                Email IITGN CDF
+              </Button>
 
-
-
-
-              <Button asChild size="lg" variant="ctaOutline" className="px-6">
+              <Button asChild variant="bare" size="lg" className="btn-swap-outline-secondary px-8">
                 <Link to="/faq">Browse FAQs</Link>
               </Button>
             </div>
-
           </div>
         </div>
       </section>
 
 
       {/* Contact Information */}
-      <section className="py-16 lg:py-24">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-              Contact Information
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 className="text-display-md mb-12 text-center">Contact Information</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               <ContactCard
+                variant="address"
                 icon={<MapPin className="w-6 h-6" />}
                 title="Address"
                 content={[
@@ -312,10 +299,11 @@ const Contact = () => {
                   "IIT Gandhinagar Campus",
                   "Near Palaj Village",
                   "Gandhinagar – 382355",
-                  "Gujarat, India"
+                  "Gujarat, India",
                 ]}
               />
               <ContactCard
+                variant="email"
                 icon={<Mail className="w-6 h-6" />}
                 title="Email"
                 content={[
@@ -324,20 +312,19 @@ const Contact = () => {
                 ]}
               />
               <ContactCard
+                variant="phone"
                 icon={<Phone className="w-6 h-6" />}
                 title="Phone"
                 content={[
                   "Main Office: +91-79-2395-2278",
-                  "Admissions Helpline: ‪+91 9220295236"
+                  "Admissions Helpline: +91-9220295236",
                 ]}
               />
               <ContactCard
+                variant="hours"
                 icon={<Clock className="w-6 h-6" />}
                 title="Office Hours"
-                content={[
-                  "Monday – Friday",
-                  "10:00 AM – 6:00 PM IST"
-                ]}
+                content={["Monday – Friday", "10:00 AM – 6:00 PM IST"]}
               />
             </div>
           </div>
@@ -345,16 +332,16 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="section-spacing section-muted border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-card  rounded-2xl p-8 md:p-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 text-center">
-                Get in Touch!
-              </h2>
-              <p className="text-muted-foreground text-center mb-8">
-                Have a question about our programs? Fill out the form below and we'll get back to you as soon as possible.
-              </p>
+            <div className="rounded-2xl border border-border bg-card p-8 md:p-12 shadow-medium">
+              <div className="mb-8 text-center">
+                <h2 className="text-display-md mb-3">Get in Touch!</h2>
+                <p className="text-lead">
+                  Have a question about our programs? Fill out the form below and we'll get back to you as soon as possible.
+                </p>
+              </div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <input
                   type="text"
@@ -371,6 +358,7 @@ const Contact = () => {
                       id="fullName"
                       name="fullName"
                       placeholder="Enter your full name"
+                      className="rounded-xl"
                       required
                     />
                   </div>
@@ -381,6 +369,7 @@ const Contact = () => {
                       name="email"
                       type="email"
                       placeholder="Enter your email"
+                      className="rounded-xl"
                       required
                     />
                   </div>
@@ -392,6 +381,7 @@ const Contact = () => {
                       type="tel"
                       inputMode="tel"
                       placeholder="+91 98765 43210"
+                      className="rounded-xl"
                       required
                     />
                     <p className="text-xs text-muted-foreground">Include your country code (e.g., +91) followed by 10–15 digits so we can reach you internationally.</p>
@@ -402,6 +392,7 @@ const Contact = () => {
                       id="organization"
                       name="organization"
                       placeholder="Current company or institution"
+                      className="rounded-xl"
                     />
                   </div>
                   <div className="space-y-2">
@@ -411,7 +402,7 @@ const Contact = () => {
                         id="programInterest"
                         name="programInterest"
                         defaultValue=""
-                        className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="h-11 w-full rounded-xl border border-input bg-background px-3 text-sm font-medium text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
                         <option value="" disabled>
                           Select a program
@@ -432,16 +423,16 @@ const Contact = () => {
                     id="message"
                     name="message"
                     placeholder="Type your message here..."
-                    className="min-h-[150px]"
+                    className="min-h-[150px] rounded-xl"
                     required
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full py-6"
+                  variant="bare"
+                  className="btn-swap-secondary w-full py-6"
                   size="lg"
-                  variant="cta"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -473,62 +464,69 @@ const Contact = () => {
       </section>
 
       {/* Visit Our Campus */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
-              Visit Our Campus
-            </h2>
-            <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
-              Interested in experiencing IIT Gandhinagar firsthand? Schedule a campus tour to explore our facilities, meet faculty and current students, and learn about the residential experience.
-            </p>
+            <div className="mb-12 text-center">
+              <h2 className="text-display-md mb-4">Visit Our Campus</h2>
+              <p className="text-base lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                Interested in experiencing IIT Gandhinagar firsthand?
+                <br />
+                Schedule a campus tour to explore our facilities, meet faculty and current students,
+                <br />
+                and learn about the residential experience.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <Card className="hover:shadow-medium transition-all duration-300">
+              <Card className="group contact-card-interactive rounded-xl border-border bg-primary shadow-soft">
                 <CardContent className="p-6">
-                  <Plane className="w-12 h-12 text-primary mb-4 mx-auto" />
-                  <h3 className="font-bold text-foreground text-center mb-2">By Air</h3>
-                  <p className="text-sm text-muted-foreground text-center">
-                    Sardar Vallabhbhai Patel International Airport, Ahmedabad (30 km)<br />
+                  <Plane className="mx-auto mb-4 h-10 w-10 text-white" aria-hidden="true" />
+                  <h3 className="font-serif text-lg font-semibold text-white text-center mb-2">By Air</h3>
+                  <p className="text-base text-white/85 text-center leading-relaxed">
+                    Sardar Vallabhbhai Patel International Airport, Ahmedabad (30 km)
+                    <br />
                     Approximately 45 minutes by taxi/cab
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-medium transition-all duration-300">
+              <Card className="group contact-card-interactive rounded-xl border-border bg-primary shadow-soft">
                 <CardContent className="p-6">
-                  <Train className="w-12 h-12 text-primary mb-4 mx-auto" />
-                  <h3 className="font-bold text-foreground text-center mb-2">By Train</h3>
-                  <p className="text-sm text-muted-foreground text-center">
-                    Gandhinagar Capital Railway Station (8 km) – 15 minutes drive<br />
+                  <Train className="mx-auto mb-4 h-10 w-10 text-white" aria-hidden="true" />
+                  <h3 className="font-serif text-lg font-semibold text-white text-center mb-2">By Train</h3>
+                  <p className="text-base text-white/85 text-center leading-relaxed">
+                    Gandhinagar Capital Railway Station (8 km) – 15 minutes drive
+                    <br />
                     Ahmedabad Railway Station (25 km) – 40 minutes drive
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-medium transition-all duration-300">
+              <Card className="group contact-card-interactive rounded-xl border-border bg-primary shadow-soft">
                 <CardContent className="p-6">
-                  <Car className="w-12 h-12 text-primary mb-4 mx-auto" />
-                  <h3 className="font-bold text-foreground text-center mb-2">By Road</h3>
-                  <p className="text-sm text-muted-foreground text-center">
-                    Well-connected by state highways from Ahmedabad, Vadodara, and other major cities<br />
+                  <Car className="mx-auto mb-4 h-10 w-10 text-white" aria-hidden="true" />
+                  <h3 className="font-serif text-lg font-semibold text-white text-center mb-2">By Road</h3>
+                  <p className="text-base text-white/85 text-center leading-relaxed">
+                    Well-connected by state highways from Ahmedabad, Vadodara, and other major cities
+                    <br />
                     Ample parking available on campus
                   </p>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-bold text-foreground mb-4">Schedule a Campus Visit</h3>
-                <p className="text-muted-foreground mb-6">
+            <Card className="rounded-2xl border-border shadow-medium">
+              <CardContent className="p-8 md:p-10 text-center">
+                <h3 className="text-heading-md mb-3">Schedule a Campus Visit</h3>
+                <p className="text-lead mb-6">
                   Campus visits are available by prior appointment only (Monday–Friday)
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Button asChild size="lg" variant="cta" className="px-6">
+                  <Button asChild variant="bare" size="lg" className="btn-swap-secondary px-8">
                     <a href="mailto:visit@iitgncdf.ac.in">Email to Schedule Visit</a>
                   </Button>
-                  <Button asChild size="lg" variant="ctaOutline" className="px-6">
+                  <Button asChild variant="bare" size="lg" className="btn-swap-outline-secondary px-8">
                     <a href="tel:+917923950000">Call to Schedule</a>
                   </Button>
                 </div>
@@ -539,68 +537,44 @@ const Contact = () => {
       </section>
 
       {/* Stay Connected */}
-      <section className="py-16 lg:py-24">
+      <section className="section-spacing section-muted border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
-              Stay Connected
-            </h2>
-            <p className="text-lg text-muted-foreground text-center mb-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-display-md mb-3">Stay Connected</h2>
+            <p className="text-lead mb-8">
               Follow us on social media for the latest updates, program announcements, and success stories.
             </p>
-            <div className="flex justify-center space-x-6">
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on LinkedIn"
-                aria-label="Visit our LinkedIn profile"
-              >
-                <Linkedin className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Twitter"
-                aria-label="Visit our Twitter profile"
-              >
-                <Twitter className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Facebook"
-                aria-label="Visit our Facebook page"
-              >
-                <Facebook className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Follow us on Instagram"
-                aria-label="Visit our Instagram profile"
-              >
-                <Instagram className="w-6 h-6 text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
-                title="Subscribe to our YouTube channel"
-                aria-label="Visit our YouTube channel"
-              >
-                <Youtube className="w-6 h-6 text-primary-foreground" />
-              </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                { Icon: Linkedin, label: "Visit our LinkedIn profile", title: "Follow us on LinkedIn" },
+                { Icon: Twitter, label: "Visit our Twitter profile", title: "Follow us on Twitter" },
+                { Icon: Facebook, label: "Visit our Facebook page", title: "Follow us on Facebook" },
+                { Icon: Instagram, label: "Visit our Instagram profile", title: "Follow us on Instagram" },
+                { Icon: Youtube, label: "Visit our YouTube channel", title: "Subscribe to our YouTube channel" },
+              ].map(({ Icon, label, title }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary hover:shadow-medium hover:text-white hover:no-underline"
+                  title={title}
+                  aria-label={label}
+                >
+                  <Icon className="w-6 h-6" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Quick Links */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
-              Quick Links
-            </h2>
+            <div className="mb-8 text-center">
+              <p className="eyebrow mb-2">Explore More</p>
+              <h2 className="text-display-sm">Quick Links</h2>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 { to: "/admissions", text: "Apply Now" },
@@ -610,7 +584,7 @@ const Contact = () => {
                 { to: "/faq", text: "FAQ" },
                 { to: "/about", text: "About Us" },
               ].map((link, index) => (
-                <Button key={index} asChild variant="ctaOutline" className="w-full">
+                <Button key={index} asChild variant="bare" className="btn-swap-secondary w-full">
                   <Link to={link.to}>{link.text}</Link>
                 </Button>
               ))}

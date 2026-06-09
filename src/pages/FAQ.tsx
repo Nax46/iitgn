@@ -4,8 +4,6 @@ import Footer from "@/components/Footer";
 import FAQAccordion from "@/components/FAQAccordion";
 import ContactCard from "@/components/ContactCard";
 import { Mail, Phone } from "lucide-react";
-import HeroSection from "@/components/HeroSection";
-
 const generalFAQs = [
   {
     question: "What is IIT Gandhinagar Competency Development Foundation?",
@@ -163,79 +161,43 @@ const FAQ = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* --- HERO SECTION (UNIFIED STYLE) --- */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-up">
+          <div className="max-w-4xl mx-auto text-center motion-safe:animate-fade-up">
+            <HelpCircle className="mx-auto mb-6 h-14 w-14 text-secondary" aria-hidden="true" />
 
-            {/* ICON */}
-            <HelpCircle className="w-16 h-16 text-primary mx-auto mb-6" />
-
-            {/* TITLE */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl mb-6">
               Frequently Asked{" "}
-              <span className="text-secondary">
-                Questions
-              </span>
+              <span className="text-secondary">Questions</span>
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               Browse curated answers covering admissions, residential life, and career commitment.
               Still curious? Our team is one message away.
             </p>
-
           </div>
         </div>
       </section>
 
-
-      {/* FAQ Sections */}
-      <section className="py-16 lg:py-24">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <div>
-              <FAQAccordion faqs={generalFAQs} category="General Questions" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={admissionsFAQs} category="Admissions & Eligibility" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={programFAQs} category="Program Details" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={feeFAQs} category="Fee & Scholarships" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={campusFAQs} category="Campus & Facilities" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={placementsFAQs} category="Placements & Career" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={technicalFAQs} category="Technical Questions" />
-            </div>
-
-            <div>
-              <FAQAccordion faqs={postProgramFAQs} category="Post-Program" />
-            </div>
+          <div className="max-w-4xl mx-auto space-y-14">
+            <FAQAccordion faqs={generalFAQs} category="General Questions" />
+            <FAQAccordion faqs={admissionsFAQs} category="Admissions & Eligibility" />
+            <FAQAccordion faqs={programFAQs} category="Program Details" />
+            <FAQAccordion faqs={feeFAQs} category="Fee & Scholarships" />
+            <FAQAccordion faqs={campusFAQs} category="Campus & Facilities" />
+            <FAQAccordion faqs={placementsFAQs} category="Placements & Career" />
+            <FAQAccordion faqs={technicalFAQs} category="Technical Questions" />
+            <FAQAccordion faqs={postProgramFAQs} category="Post-Program" />
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 lg:py-24 bg-muted/50">
+      <section className="section-spacing section-muted border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-8 text-center">
-              Have More Questions?
-            </h2>
+          <div className="max-w-4xl mx-auto motion-safe:animate-fade-up">
+            <h2 className="text-display-sm mb-10 text-center">Have More Questions?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ContactCard
                 icon={<Mail className="w-6 h-6" />}
