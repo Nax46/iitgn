@@ -6,20 +6,20 @@ import BrochureDownloadButton from "@/components/BrochureDownloadButton";
 const program = {
   title: "PG Diploma in AI-ML & Agentic AI Engineering",
   description:
-    "Design production-grade LLM workflows, multi-agent pipelines, and responsible AI systems that combine LangChain, LangGraph, AutoGen, and CrewAI.",
+    "A residential program combining IIT Gandhinagar's academic rigour with applied training in LLM systems, multi-agent workflows, and production AI deployment.",
   route: "/gen-ai-agentic-aiml",
   badge: "Residential PG Diploma",
   stats: [
-    { label: "Duration", value: "6 Months" },
-    { label: "Mentored Hours", value: "600+" },
-    { label: "Certification", value: "PG Diploma" },
+    { label: "Duration", value: "6 Months", detail: "Full-time, on campus" },
+    { label: "Mentored Hours", value: "600+", detail: "Labs, projects, and reviews" },
+    { label: "Credential", value: "PG Diploma", detail: "Awarded by IIT Gandhinagar" },
   ],
   skills: [
-    "Multi-agent orchestration & tool usage",
+    "Multi-agent orchestration and tool integration",
     "LLM fine-tuning, evaluation, and guardrails",
-    "MLOps, observability, and CI/CD for AI",
-    "Responsible AI, governance, and compliance",
-    "Capstone with LangChain + enterprise APIs",
+    "MLOps, observability, and CI/CD for AI systems",
+    "Responsible AI, governance, and compliance frameworks",
+    "Capstone project with industry mentorship",
   ],
 };
 
@@ -27,58 +27,68 @@ const ProgramHighlights = () => {
   return (
     <section aria-labelledby="program-highlights-heading" className="section-spacing bg-background border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mb-10 lg:mb-12">
-          <p className="eyebrow mb-3">Program Overview</p>
-          <h2 id="program-highlights-heading" className="text-display-sm mb-3">
-            Our PG Diploma Program
-          </h2>
-          <p className="text-lead">
-            A residential, industry-aligned specialization built for careers in AI-ML and Agentic AI.
-          </p>
-        </div>
-
-        <article className="card-panel max-w-5xl border-t-4 border-t-accent">
-          <div className="p-6 sm:p-8 lg:p-10 space-y-8">
-            <div className="space-y-3 border-b border-border pb-6">
-              <p className="eyebrow">{program.badge}</p>
-              <h3 className="text-heading-lg">{program.title}</h3>
-              <p className="text-sm font-medium text-secondary">
-                Futurense — Admissions, Industry and Hospitality Partner
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+          <div className="lg:col-span-5 space-y-8">
+            <div>
+              <p className="eyebrow mb-3">Program Overview</p>
+              <h2 id="program-highlights-heading" className="text-display-sm mb-4">
+                PG Diploma in AI-ML &amp; Agentic AI
+              </h2>
+              <p className="text-lead">
+                A six-month residential programme for engineers and technologists seeking depth in
+                applied AI, with structured pathways to industry roles.
               </p>
-              <p className="text-lead max-w-3xl">{program.description}</p>
             </div>
 
-            <dl className="grid gap-px sm:grid-cols-3 border border-border bg-border">
+            <div className="border-l-2 border-secondary pl-5 space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-wide text-secondary">
+                {program.badge}
+              </p>
+              <h3 className="text-heading-md">{program.title}</h3>
+              <p className="text-sm text-muted-foreground">
+                Delivered in partnership with Futurense (Admissions, Industry and Hospitality Partner)
+              </p>
+              <p className="text-base text-foreground/85 leading-relaxed pt-1">{program.description}</p>
+            </div>
+
+            <dl className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 border-t border-border pt-8">
               {program.stats.map((stat) => (
-                <div key={stat.label} className="bg-card p-4 lg:p-5">
-                  <dt className="text-xs uppercase tracking-wide text-muted-foreground">{stat.label}</dt>
-                  <dd className="font-serif text-xl font-semibold text-foreground mt-1">{stat.value}</dd>
+                <div key={stat.label} className="space-y-1">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    {stat.label}
+                  </dt>
+                  <dd className="font-serif text-2xl font-semibold text-foreground">{stat.value}</dd>
+                  <dd className="text-sm text-muted-foreground">{stat.detail}</dd>
                 </div>
               ))}
             </dl>
+          </div>
 
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide text-foreground mb-4">
-                Learning Outcomes
-              </h4>
-              <ul className="grid gap-3 md:grid-cols-2" aria-label={`${program.title} skill outcomes`}>
-                {program.skills.map((skill) => (
-                  <li key={skill} className="flex items-start gap-3 text-sm leading-relaxed">
-                    <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" aria-hidden="true" />
-                    <span className="text-muted-foreground">{skill}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="lg:col-span-7 border border-border bg-muted/30">
+            <div className="border-b border-border bg-card px-6 py-5 lg:px-8">
+              <h4 className="font-serif text-lg font-semibold text-foreground">Learning Outcomes</h4>
+              <p className="text-sm text-muted-foreground mt-1">
+                Competencies graduates are expected to demonstrate upon completion.
+              </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-border">
+            <ul className="divide-y divide-border" aria-label={`${program.title} learning outcomes`}>
+              {program.skills.map((skill) => (
+                <li key={skill} className="flex items-start gap-4 px-6 py-4 lg:px-8 lg:py-5 bg-card">
+                  <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 shrink-0" aria-hidden="true" />
+                  <span className="text-sm lg:text-base text-foreground leading-relaxed">{skill}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap items-center gap-3 border-t border-border bg-card px-6 py-5 lg:px-8">
               <Button asChild variant="cta">
                 <Link to={program.route}>View Full Curriculum</Link>
               </Button>
               <BrochureDownloadButton size="sm" variant="ctaOutline" label="Download Brochure" />
             </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
   );

@@ -25,6 +25,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
+import HeroSection from "@/components/HeroSection";
+import { iitgnSocialLinks } from "@/data/socialLinks";
+import { applicationFormLinkProps } from "@/data/applicationForm";
+import CtaArrow from "@/components/CtaArrow";
 
 const CONTACT_PROGRAM_OPTIONS = [
   {
@@ -562,6 +566,40 @@ const Contact = () => {
                   <Icon className="w-6 h-6" />
                 </a>
               ))}
+            <div className="flex flex-wrap justify-center gap-4" role="list" aria-label="IIT Gandhinagar social media">
+              {iitgnSocialLinks.map((link) => {
+                const icons = { linkedin: Linkedin, twitter: Twitter, facebook: Facebook, instagram: Instagram, youtube: Youtube };
+                const Icon = icons[link.platform];
+
+                if (!link.href) {
+                  return (
+                    <span
+                      key={link.platform}
+                      role="listitem"
+                      className="w-12 h-12 bg-primary/30 rounded-full flex items-center justify-center cursor-not-allowed"
+                      aria-label={`${link.label} (unavailable)`}
+                      title={`${link.label} (unavailable)`}
+                    >
+                      <Icon className="w-6 h-6 text-primary-foreground/40" aria-hidden="true" />
+                    </span>
+                  );
+                }
+
+                return (
+                  <a
+                    key={link.platform}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    title={link.label}
+                    aria-label={link.label}
+                  >
+                    <Icon className="w-6 h-6 text-primary-foreground" aria-hidden="true" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -576,8 +614,13 @@ const Contact = () => {
               <h2 className="text-display-sm">Quick Links</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <Button asChild variant="ctaOutline" className="w-full">
+                <a {...applicationFormLinkProps} className="hover:no-underline">
+                  Apply Now
+                  <CtaArrow />
+                </a>
+              </Button>
               {[
-                { to: "/admissions", text: "Apply Now" },
                 { to: "/programs", text: "View Programs" },
                 { to: "/admissions", text: "Check Eligibility" },
                 { to: "/placements", text: "Career Support" },
@@ -585,6 +628,8 @@ const Contact = () => {
                 { to: "/about", text: "About Us" },
               ].map((link, index) => (
                 <Button key={index} asChild variant="bare" className="btn-swap-secondary w-full">
+              ].map((link) => (
+                <Button key={link.to + link.text} asChild variant="ctaOutline" className="w-full">
                   <Link to={link.to}>{link.text}</Link>
                 </Button>
               ))}

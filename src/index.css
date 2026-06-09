@@ -7,7 +7,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 45% 14%;
+    --foreground: 215 28% 17%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 45% 14%;
@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 45% 14%;
 
-    /* Deep Navy */
-    --primary: 220 55% 16%;
+    /* Deep Navy — #0B1F4D */
+    --primary: 220 75% 17%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 220 55% 12%;
+    --primary-dark: 220 75% 13%;
 
     /* IIT-inspired Blue */
     --secondary: 210 58% 32%;
@@ -27,8 +27,8 @@
     --muted: 210 22% 96%;
     --muted-foreground: 215 18% 42%;
 
-    /* Subtle Gold Accent */
-    --accent: 43 52% 44%;
+    /* IIT Gold Accent — #C9A227 */
+    --accent: 43 67% 47%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 42%;
@@ -45,9 +45,15 @@
     --gradient-hero: hsl(220 55% 14%);
     --gradient-subtle: hsl(210 25% 97%);
 
-    --shadow-soft: 0 1px 2px hsl(220 45% 14% / 0.05);
-    --shadow-medium: 0 2px 8px hsl(220 45% 14% / 0.07);
-    --shadow-large: 0 4px 16px hsl(220 45% 14% / 0.09);
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.07);
+    --shadow-large: 0 16px 40px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+    /* Institutional section tones */
+    --footer: 220 60% 9%;
+    --career-navy-from: 220 56% 13%;
+    --career-navy-to: 215 52% 17%;
   }
 }
 
@@ -58,9 +64,11 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
+    overflow-x: hidden;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -104,7 +112,7 @@
   }
 
   a {
-    @apply hover:text-secondary no-underline;
+    @apply no-underline;
   }
 }
 
@@ -113,13 +121,104 @@
     @apply py-14 lg:py-20;
   }
 
+  .section-xl {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  @media (min-width: 1024px) {
+    .section-xl {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  .btn-arrow-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .group:hover .btn-arrow-icon,
+  .group:focus-visible .btn-arrow-icon {
+    transform: translateX(4px);
+  }
+
+  .section-alt {
+    background-color: #f8fafc;
+  }
+
+  .institutional-card {
+    background: hsl(var(--card));
+    border-radius: 0.75rem;
+    border: none;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .institutional-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .accent-card {
+    background: hsl(var(--card));
+    border-radius: 0.75rem;
+    border: none;
+    border-left: 4px solid #c9a227;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .accent-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .hover-lift {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
   .section-muted {
     background-color: hsl(var(--muted));
   }
 
   .section-navy {
-    background-color: hsl(var(--gradient-hero));
+    background-color: var(--gradient-hero);
     color: hsl(0 0% 100%);
+  }
+
+  .section-career-showcase {
+    background: linear-gradient(
+      165deg,
+      hsl(var(--career-navy-from)) 0%,
+      hsl(220 54% 15%) 48%,
+      hsl(var(--career-navy-to)) 100%
+    );
+    color: hsl(0 0% 100%);
+    border: 1px solid hsl(220 45% 24% / 0.45);
+    border-radius: 0.75rem;
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.07),
+      0 4px 24px hsl(220 55% 10% / 0.12);
+  }
+
+  .section-career-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(210 58% 32% / 0.14), transparent 70%);
+    pointer-events: none;
+  }
+
+  .footer-institutional {
+    background-color: hsl(var(--footer));
+    color: hsl(0 0% 100%);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.05);
   }
 
   .eyebrow {
@@ -151,7 +250,7 @@
   }
 
   .card-panel {
-    @apply rounded-sm border border-border bg-card text-card-foreground;
+    @apply rounded-lg border border-border bg-card text-card-foreground shadow-soft;
   }
 
   .card-elevated {
@@ -163,17 +262,43 @@
   }
 
   .nav-link {
-    @apply relative px-3 py-2 text-sm font-medium text-foreground/75 transition-colors duration-200
-      hover:text-primary hover:no-underline focus-visible:no-underline;
+    @apply relative px-2 py-2 text-sm font-medium text-foreground/80 transition-colors duration-300
+      hover:text-[#0B1F4D] hover:no-underline focus-visible:no-underline;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #c9a227;
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: calc(100% - 0.5rem);
   }
 
   .nav-link-active {
-    @apply text-primary font-semibold;
+    @apply text-[#0B1F4D] font-bold;
   }
 
   .nav-link-active::after {
-    content: "";
-    @apply absolute bottom-0 left-3 right-3 h-0.5 bg-accent;
+    width: calc(100% - 0.5rem);
+  }
+
+  /* Prevent global link styles from overriding institutional buttons */
+  .btn-anchor {
+    text-decoration: none !important;
+  }
+
+  .btn-anchor:hover,
+  .btn-anchor:focus-visible {
+    text-decoration: none !important;
   }
 
   .icon-box {
@@ -215,5 +340,13 @@
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
   }
 }

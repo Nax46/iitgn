@@ -75,7 +75,7 @@ const careerSupport = [
 const careerOutcome = {
   program: "PG Diploma in AI-ML & Agentic AI Engineering",
   description:
-    "Graduates are prepared for high-demand roles across the AI-ML and Agentic AI ecosystem — from building intelligent agents to deploying production ML systems.",
+    "Graduates are prepared for roles across the AI-ML and Agentic AI field, from building intelligent agents to deploying production ML systems.",
   roles: [
     "AI Engineer / Machine Learning Engineer",
     "Generative AI Engineer",
@@ -263,6 +263,16 @@ const Placements = () => {
       </section>
 
       <section className="section-spacing">
+      <HeroSection
+        eyebrow="Career Services"
+        title="Career Support &"
+        highlight="Placement Assistance"
+        description="Career support delivered through M/s. Futurense Technologies Pvt. Ltd., the operating partner for admissions and placement coordination at IITGN CDF."
+        align="left"
+      />
+
+      {/* Career Support Framework */}
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 lg:mb-14">
             <h2 className="text-display-sm mb-3">Our Career Support Framework</h2>
@@ -311,6 +321,12 @@ const Placements = () => {
             <h2 className="text-display-sm mb-3">Our Hiring Partners</h2>
             <p className="text-lead max-w-3xl mx-auto">
               Organizations that collaborate with IIT Gandhinagar to empower future-ready talent.
+          <div className="text-center mb-12 lg:mb-16 animate-fade-in">
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4">
+              Our Hiring Partners
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Organizations that recruit and mentor graduates from IIT Gandhinagar programmes.
             </p>
           </div>
 
@@ -406,6 +422,11 @@ const Placements = () => {
             <p className="mt-10 font-serif text-lg font-semibold text-foreground lg:text-xl">
               Your success is our success. We invest in your career transformation.
             </p>
+                <p className="text-center text-foreground font-semibold mt-8">
+                  We remain committed to supporting each participant through interview preparation and industry introductions.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -430,7 +451,7 @@ const Placements = () => {
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
                       <span className="text-xs font-bold">•</span>
                     </div>
-                    <p className="text-foreground font-medium">90%+ Attendance — Consistent attendance required</p>
+                    <p className="text-foreground font-medium">90%+ attendance throughout the programme</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">

@@ -1,5 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CtaArrow from "@/components/CtaArrow";
 import {
   Dialog,
   DialogContent,
@@ -11,16 +13,15 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import styles from "./BrochureDownloadButton.module.css";
 
 type BrochureDownloadButtonProps = {
-  /** Optional className to tweak button spacing where used */
   className?: string;
-  /** Size to forward to the underlying button */
   size?: "default" | "sm" | "lg" | "icon";
-  /** Variant to forward to the underlying button */
-  variant?: "default" | "outline" | "cta" | "ctaOutline" | "ctaOnDark" | "ghost" | "secondary";
-  /** Custom button label */
+  variant?: "default" | "outline" | "cta" | "ctaOutline" | "ctaOutlineOnDark" | "ctaOnDark" | "ghost" | "secondary";
   label?: string;
+  premium?: boolean;
 };
 
 type BrochureFormState = {
@@ -43,6 +44,7 @@ const BrochureDownloadButton = ({
   size = "sm",
   variant = "outline",
   label = "Download Brochure",
+  premium = false,
 }: BrochureDownloadButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,15 +81,34 @@ const BrochureDownloadButton = ({
     setIsDialogOpen(false);
   };
 
+  const displayLabel = premium ? "Download Program Brochure" : label;
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
         <Button
           size={size}
           variant={variant}
-          className={className}
+          className={cn(premium && styles.premiumTrigger, className)}
+          data-variant={variant}
         >
-          {label}
+          {premium ? (
+            <>
+              <span className={styles.premiumIcon}>
+                <Download className="w-4 h-4" aria-hidden="true" />
+              </span>
+              <span className={styles.premiumText}>
+                <span className={styles.premiumLabel}>{displayLabel}</span>
+                <span className={styles.premiumMeta}>PDF | Curriculum | Fees | Admissions</span>
+              </span>
+              <CtaArrow />
+            </>
+          ) : (
+            <>
+              {displayLabel}
+              <CtaArrow />
+            </>
+          )}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
@@ -132,7 +153,7 @@ const BrochureDownloadButton = ({
           </div>
           {formError && <p className="text-sm text-destructive">{formError}</p>}
           <DialogFooter>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" variant="cta" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? "Preparing download..." : "Download PDF"}
             </Button>
           </DialogFooter>
@@ -143,5 +164,3 @@ const BrochureDownloadButton = ({
 };
 
 export default BrochureDownloadButton;
-
-

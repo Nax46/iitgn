@@ -1,26 +1,90 @@
 import {
-  ClipboardList,
-  UserCheck,
-  FileCheck,
-  CheckCircle2,
   PenLine,
+  UserCheck,
+  Mail,
+  CheckCircle2,
   Check,
-  Layers,
-  CreditCard,
-  Home as HomeIcon,
-  CalendarDays,
-  RefreshCw,
+  GraduationCap,
+  Code2,
+  Laptop,
+  Cpu,
+  LineChart,
+  Database,
+  ClipboardCheck,
+  Users,
+  Briefcase,
+  FileText,
+  MessageSquare,
+  FolderKanban,
+  Network,
 } from "lucide-react";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import CtaArrow from "@/components/CtaArrow";
+import BrochureDownloadButton from "@/components/BrochureDownloadButton";
+import ProgramSectionHeader from "@/components/programs/ProgramSectionHeader";
+import { applicationFormLinkProps } from "@/data/applicationForm";
+import styles from "./Admissions.module.css";
+
+const heroStats = [
+  "600+ Learning Hours",
+  "6-Month Residential Program",
+  "Industry Mentorship",
+  "Placement Assistance",
+  "IIT Ecosystem",
+];
+
+const processSteps = [
+  {
+    icon: PenLine,
+    title: "Submit Application",
+    description: "Complete the online form with academic and identity documents.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "AINPT Assessment",
+    description: "120-minute proctored evaluation of aptitude and technical fundamentals.",
+  },
+  {
+    icon: UserCheck,
+    title: "Panel Interview",
+    description: "Conversation with IIT faculty and industry mentors on fit and potential.",
+  },
+  {
+    icon: Mail,
+    title: "Offer Letter",
+    description: "Selected candidates receive a formal admission offer from IITGN CDF.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Enrollment",
+    description: "Confirm your seat by completing fee payment and onboarding.",
+  },
+];
+
+const eligibleFields = [
+  { icon: GraduationCap, label: "Engineering" },
+  { icon: Code2, label: "Computer Science" },
+  { icon: Laptop, label: "IT" },
+  { icon: Cpu, label: "Electronics" },
+  { icon: LineChart, label: "Mathematics" },
+  { icon: Database, label: "Data Science" },
+];
+
+const additionalRequirements = [
+  "Programming Basics",
+  "Problem Solving",
+  "Analytical Thinking",
+  "Communication Skills",
+];
 
 const admissionRounds = [
   {
+    badge: "Round 1",
+    icon: ClipboardCheck,
     title: "All India National Proficiency Test (AINPT · IITGN)",
-    subheading: "Round 1",
     description: "A 120-minute online proctored test that evaluates:",
     highlights: [
       "Quantitative aptitude",
@@ -31,8 +95,9 @@ const admissionRounds = [
     note: "Results are declared within 48 hours of the test.",
   },
   {
+    badge: "Round 2",
+    icon: MessageSquare,
     title: "Personal Interview",
-    subheading: "Round 2",
     description:
       "Shortlisted candidates appear for a panel interview with IIT faculty and industry mentors. The conversation assesses:",
     highlights: [
@@ -44,105 +109,92 @@ const admissionRounds = [
   },
 ];
 
-const steps = [
-  {
-    icon: <PenLine className="w-6 h-6" />,
-    title: "Step 01 · Apply Online",
-    description: "Submit your application form along with required academic and identity documents.",
-  },
-  {
-    icon: <FileCheck className="w-6 h-6" />,
-    title: "Step 02 · Round 1: AINPT",
-    description:
-      "Appear for the 120-minute All India National Proficiency Test evaluating technical aptitude and problem-solving.",
-  },
-  {
-    icon: <UserCheck className="w-6 h-6" />,
-    title: "Step 03 · Round 2: Panel Interview",
-    description:
-      "IIT faculty and industry mentors assess your capability, motivation, and fit for the residential program.",
-  },
-  {
-    icon: <CheckCircle2 className="w-6 h-6" />,
-    title: "Step 04 · Offer & Enrollment",
-    description:
-      "Selected candidates receive an admission offer from IITGN CDF and confirm their seat by completing fee payment.",
-  },
-];
-
-const degreeCriteria = [
-  "B.Tech / B.E. / B.S. (4-year) with minimum 50% marks or 5.0 CPI/CGPA (10-point scale)",
-  "M.Sc., MCA, Integrated M.Sc./M.Tech, BS-MS (5-year programs) with minimum 50% marks or 5.0 CPI/CGPA",
-  ">70% or >7.0 CGPA in Class 12th or equivalent exam",
-  ">60% or >6.0 CGPA in completed previous semesters with no backlogs.",
-];
-
-const additionalRequirements = [
-  "Proficiency in at least one programming language",
-  "Basic understanding of mathematics & statistics",
-  "Good written and spoken communication skills",
-];
-
 const careerSupport = [
-  "Dedicated placement support team",
-  "Resume building & portfolio preparation",
-  "Mock interviews & communication grooming",
-  "Industry mentor interaction sessions",
-  "Placement opportunities through IITGN CDF’s partner network",
+  {
+    icon: Users,
+    title: "Dedicated Placement Team",
+    description: "Structured guidance from IITGN CDF placement support specialists.",
+  },
+  {
+    icon: FileText,
+    title: "Resume Building",
+    description: "Professional resume and profile development for AI-ML roles.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Mock Interviews",
+    description: "Communication grooming and interview readiness sessions.",
+  },
+  {
+    icon: Briefcase,
+    title: "Industry Mentorship",
+    description: "Direct interaction with practitioners and hiring leaders.",
+  },
+  {
+    icon: FolderKanban,
+    title: "Portfolio Development",
+    description: "Build a showcase of projects and capstone work.",
+  },
+  {
+    icon: Network,
+    title: "Partner Network Opportunities",
+    description: "Access placement pathways through IITGN CDF's partner network.",
+  },
 ];
 
-const feeCards = [
-  {
-    icon: <CreditCard className="w-6 h-6" />,
-    title: "Tuition fees",
-    details:
-      "Shared with shortlisted candidates; covers tuition, learning resources, labs, industry immersions, and academic services.",
-  },
-  {
-    icon: <HomeIcon className="w-6 h-6" />,
-    title: "Hostel & Operations Fee",
-    details:
-      "Residential stay on campus is mandatory. Hostel, utilities, and dining services are coordinated through IITGN CDF.",
-  },
-  {
-    icon: <CalendarDays className="w-6 h-6" />,
-    title: "Payment Schedule",
-    details:
-      "EMI Options are available.",
-  },
-  {
-    icon: <RefreshCw className="w-6 h-6" />,
-    title: "Refund Policy",
-    details:
-      "Refunds follow institutional guidelines. Any withdrawal requests are processed as per IITGN CAA's published timelines.",
-  },
+const feeSummary = [
+  { label: "Tuition", amount: "₹5,00,000" },
+  { label: "Residential & Operations", amount: "₹1,25,000" },
+  { label: "Application", amount: "₹3,000" },
 ];
 
 const feeBreakdown = [
   {
-    component: "Tuition Fee",
-    amount: "Rs 5,00,000",
-    details: "All inclusive",
+    label: "Tuition Fee",
+    amount: "₹5,00,000",
+    detail: "All inclusive — covers academic delivery, faculty sessions, labs, and assessments.",
     payableTo: "IIT Gandhinagar CDF",
   },
   {
-    component: "Hostel & Operations Fee",
-    amount: "Rs 1,25,000",
-    details: "GST applicable and includes hostels, meals, labs and admin for 6 months. Non Refundable.",
+    label: "Hostel & Operations Fee",
+    amount: "₹1,25,000",
+    detail: "GST applicable. Includes hostels, meals, campus facilities, and admin for 6 months.",
     payableTo: "Futurense Technologies",
   },
   {
-    component: "Application Fee",
-    amount: "Rs 3,000",
-    details: "One-time, Non Refundable",
+    label: "Application Fee",
+    amount: "₹3,000",
+    detail: "One-time, non-refundable processing fee.",
     payableTo: "Futurense Technologies",
   },
 ];
 
-const programRefund = [
-  { period: "Before Program Commencement", amount: "Rs 4,00,000" },
-  { period: "After Program Commencement (Within 15 days)", amount: "Rs 2,00,000" },
-  { period: "After Program Commencement (Post 15 days)", amount: "No Refund Possible" },
+const refundTimeline = [
+  {
+    period: "Before Program Start",
+    amount: "₹4,00,000 Refund",
+    status: "Eligible",
+    variant: "refundGreen" as const,
+  },
+  {
+    period: "Within 15 Days",
+    amount: "₹2,00,000 Refund",
+    status: "Partial",
+    variant: "refundAmber" as const,
+  },
+  {
+    period: "After 15 Days",
+    amount: "No Refund",
+    status: "Not Eligible",
+    variant: "refundRed" as const,
+  },
+];
+
+const trustBadges = [
+  "IIT Ecosystem",
+  "Industry Mentorship",
+  "Placement Support",
+  "Residential Experience",
 ];
 
 const Admissions = () => {
@@ -150,355 +202,283 @@ const Admissions = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* ---------------- HERO SECTION (PLACEMENTS STYLE) ---------------- */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
+      {/* Hero */}
+      <section className="section-alt pt-28 pb-16 lg:pt-32 lg:pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-up">
+          <div className={styles.heroGrid}>
+            <div>
+              <p className="eyebrow mb-3">Admissions 2026</p>
+              <h1 className={styles.heroTitle}>Start Your Application</h1>
+              <p className={styles.heroDesc}>
+                Complete the online application for the PG Diploma in AI-ML and Agentic AI Engineering.
+                Shortlisted candidates proceed through AINPT evaluation and a panel interview.
+              </p>
 
-            {/* ICON */}
-            <ClipboardList className="w-16 h-16 text-primary mx-auto mb-6" />
-
-            {/* TITLE */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Start Your{" "}
-              <span className="text-secondary">
-                Application
-              </span>
-            </h1>
-
-            {/* DESCRIPTION */}
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              Submit your IITGN CDF application, showcase your portfolio, and unlock immersive
-              residential learning designed for ambitious engineers and technologists.
-            </p>
-
-            {/* CTA */}
-            <Button asChild size="lg" variant="cta" className="px-8">
-              <a
-                href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Begin Application
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Application Journey + Eligibility */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] items-start">
-            <article className="border border-border/70 bg-card/95 p-6 sm:p-8 lg:p-10 ">
-              <div className="mb-8 text-center lg:text-left">
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">Application Process</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
-                  Follow these simple steps to complete your application
-                </p>
-              </div>
-              <ol className="space-y-6">
-                {steps.map((step, index) => (
-                  <li key={step.title} className="flex gap-4">
-                    <div className="flex flex-col items-center">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-soft">
-                        {index + 1}
-                      </span>
-                      {index < steps.length - 1 && <span className="mt-2 h-full w-px bg-border/70" aria-hidden="true" />}
-                    </div>
-                    <div className="flex-1 rounded-sm border border-border/80 bg-muted/30 p-5 shadow-soft">
-                      <div className="flex items-center gap-3 text-primary">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                          {step.icon}
-                        </div>
-                        <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground mt-3">{step.description}</p>
-                    </div>
-                  </li>
+              <div className={styles.heroStats}>
+                {heroStats.map((stat) => (
+                  <div key={stat} className={styles.heroStat}>
+                    {stat}
+                  </div>
                 ))}
-              </ol>
-            </article>
+              </div>
 
-            <Card className="rounded-[2rem] border border-border/70 ">
-              <CardHeader className="space-y-3">
-                <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">Eligibility Criteria</CardTitle>
-                <CardDescription className="text-base lg:text-lg">
-                  Applicants must hold one of the following degrees in relevant fields:
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-8">
-                <ul className="space-y-3 text-muted-foreground">
-                  {degreeCriteria.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary mt-1" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="rounded-sm bg-primary/5 border border-primary/20 p-5">
-                  <h4 className="text-base font-semibold text-primary mb-2">Additional Consideration</h4>
-                  <p className="text-muted-foreground">
-                    Candidates with strong programming skills or industry experience may be considered even with slightly lower grades (Academic Committee discretion).
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Additional Requirements</h3>
-                  <ul className="space-y-3 text-muted-foreground">
-                    {additionalRequirements.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <Layers className="w-5 h-5 text-secondary mt-1" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Admission Evaluation Rounds */}
-      <section className="py-16 lg:py-24 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
-            <div className="space-y-6">
-              <div className="border border-primary/30 bg-card/95  p-8 lg:p-10 text-center lg:text-left">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-3">Admission Process</p>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  Two Rounds to Evaluate Skill & Potential
-                </h2>
-                <p className="text-muted-foreground mt-4">
-                  Begin with the proctored All India National Proficiency Test (AINPT), followed by a personal interview with industry mentors.
-                </p>
-                <Button asChild size="lg" variant="cta" className="mt-8 px-8">
-                  <a href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462" target="_blank" rel="noopener noreferrer">
+              <div className={styles.heroActions}>
+                <Button asChild size="lg" variant="cta">
+                  <a {...applicationFormLinkProps} className="hover:no-underline">
                     Apply Now
+                    <CtaArrow />
                   </a>
                 </Button>
+                <BrochureDownloadButton premium size="lg" variant="ctaOutline" />
               </div>
-
-              {/* Futurense Description Box */}
-              <Card className="border border-primary/20 bg-primary/5">
-                <CardContent className="p-6">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    M/s. Futurense Technologies Pvt. Ltd. is the Admissions, Industry and Hospitality Partner for the IITGN CDF PG Diploma Programs.
-                  </p>
-                </CardContent>
-              </Card>
             </div>
 
-            <div className="space-y-6">
-              {admissionRounds.map((round) => (
-                <article key={round.title} className="rounded-[2rem] border border-border/70 bg-card/90  p-6 lg:p-8">
-                  <div className="flex flex-col gap-2 mb-4">
-                    <span className="text-xs font-semibold text-primary uppercase tracking-[0.35em]">{round.subheading}</span>
-                    <h3 className="text-2xl font-bold text-foreground">{round.title}</h3>
+            <div className={styles.heroVisual}>
+              <div className={styles.heroImage}>
+                <img
+                  src="/programs/AIA.jpg"
+                  alt="IIT Gandhinagar admissions"
+                  loading="eager"
+                />
+              </div>
+              <span className={`${styles.floatingBadge} ${styles.badgeTop}`}>Admission Open</span>
+              <span className={`${styles.floatingBadge} ${styles.badgeMid}`}>Limited Cohort</span>
+              <span className={`${styles.floatingBadge} ${styles.badgeBottom}`}>IITGN Campus</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Process */}
+      <section className="section-xl">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ProgramSectionHeader
+            eyebrow="How to Apply"
+            title="Application Process"
+            description="A clear five-step pathway from application to enrollment."
+          />
+
+          <div className={styles.stepsGrid}>
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <article key={step.title} className={styles.stepCard}>
+                  <span className={styles.stepNumber}>{index + 1}</span>
+                  <div className={styles.stepIcon}>
+                    <Icon className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <p className="text-muted-foreground mb-4">{round.description}</p>
-                  <ul className="space-y-2 text-sm text-foreground">
-                    {round.highlights.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-primary mt-1" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 text-sm font-semibold text-primary">{round.note}</p>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.description}</p>
                 </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Eligibility */}
+      <section className="section-xl section-alt">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ProgramSectionHeader
+            eyebrow="Who Can Apply"
+            title="Eligibility Criteria"
+            description="Open to graduates from relevant technical and analytical backgrounds."
+          />
+
+          <div className={styles.eligibilityGrid}>
+            {eligibleFields.map(({ icon: Icon, label }) => (
+              <div key={label} className={styles.eligibilityCard}>
+                <div className={styles.eligibilityIcon}>
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                </div>
+                <p className={styles.eligibilityLabel}>{label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.requirementsCard}>
+            <h3>Additional Requirements</h3>
+            <div className={styles.requirementsGrid}>
+              {additionalRequirements.map((item) => (
+                <span key={item} className={styles.requirementItem}>
+                  {item}
+                </span>
               ))}
             </div>
           </div>
+
+          <p className={styles.degreeNote}>
+            Applicants must hold a B.Tech / B.E. / B.S. (4-year), M.Sc., MCA, or equivalent with
+            minimum 50% marks or 5.0 CPI/CGPA. Candidates with strong programming skills or industry
+            experience may be considered at the Academic Committee&apos;s discretion.
+          </p>
         </div>
       </section>
 
-      {/* Career Assistance */}
-      <section className="py-16 lg:py-24 bg-muted/40">
+      {/* AINPT + Interview */}
+      <section className="section-xl">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] items-center">
-            <div className=" section-navy p-10 text-center lg:text-left  text-primary-foreground">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Career Assistance & Placement Support</h2>
-              <p className="text-lg text-primary-foreground/90 max-w-xl mx-auto lg:mx-0">
-                Dedicated mentors guide you through resume building, mock interviews, and partner-led placement
-                opportunities anchored by CAA&apos;s network.
-              </p>
-            </div>
-            <Card className="border border-border/70 rounded-sm">
-              <CardContent className="p-6 lg:p-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {careerSupport.map((item, index) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-4 rounded-sm border border-border/80 p-4 hover:border-primary/40 transition-colors bg-muted/20"
-                    >
-                      <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
-                        {index + 1}
-                      </div>
-                      <p className="text-muted-foreground text-sm">{item}</p>
+          <ProgramSectionHeader
+            eyebrow="Evaluation"
+            title="AINPT & Interview Rounds"
+            description="Two structured rounds to evaluate skill, potential, and programme fit."
+          />
+
+          <div className={styles.roundsGrid}>
+            {admissionRounds.map((round) => {
+              const Icon = round.icon;
+              return (
+                <article key={round.title} className={styles.roundCard}>
+                  <p className={styles.roundBadge}>{round.badge}</p>
+                  <div className={styles.roundHeader}>
+                    <div className={styles.roundIcon}>
+                      <Icon className="w-5 h-5" aria-hidden="true" />
                     </div>
-                  ))}
+                    <h3 className={styles.roundTitle}>{round.title}</h3>
+                  </div>
+                  <p className={styles.roundDesc}>{round.description}</p>
+                  <ul className={styles.roundList}>
+                    {round.highlights.map((item) => (
+                      <li key={item} className={styles.roundListItem}>
+                        <Check className={styles.roundCheck} aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={styles.roundNote}>{round.note}</p>
+                </article>
+              );
+            })}
+          </div>
+
+          <p className={styles.partnerNote}>
+            M/s. Futurense Technologies Pvt. Ltd. is the Admissions, Industry and Hospitality
+            Partner for the IITGN CDF PG Diploma Programs.
+          </p>
+        </div>
+      </section>
+
+      {/* Career Support */}
+      <section className="section-xl section-alt">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ProgramSectionHeader
+            eyebrow="Career Pathways"
+            title="Career Assistance & Placement Support"
+            description="Dedicated mentors guide you from resume building to partner-led placement opportunities."
+          />
+
+          <div className={styles.careerGrid}>
+            {careerSupport.map(({ icon: Icon, title, description }) => (
+              <article key={title} className={styles.careerCard}>
+                <div className={styles.careerIcon}>
+                  <Icon className="w-5 h-5" aria-hidden="true" />
                 </div>
-              </CardContent>
-            </Card>
+                <h3 className={styles.careerTitle}>{title}</h3>
+                <p className={styles.careerDesc}>{description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Fees Structure */}
-      <section className="py-16 lg:py-24 section-muted border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 space-y-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">Fees Structure & Refund Policy</h2>
-            <p className="text-lg text-muted-foreground mt-3">
-              Transparent view of financial planning for IITGN CDF programs.
-            </p>
+      {/* Program Investment */}
+      <section className="section-xl">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ProgramSectionHeader
+            eyebrow="Investment"
+            title="Program Investment"
+            description="Transparent fee structure covering academic delivery, residential experience, and admissions."
+          />
+
+          <div className={styles.feeOverview}>
+            <p className={styles.feeOverviewTitle}>Program Investment Overview</p>
+            <div className={styles.feeOverviewGrid}>
+              {feeSummary.map((item) => (
+                <div key={item.label} className={styles.feeOverviewItem}>
+                  <span className={styles.feeOverviewLabel}>{item.label}</span>
+                  <span className={styles.feeOverviewAmount}>{item.amount}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="overflow-hidden  border border-border/70 bg-card/90 ">
-            <table className="w-full text-left text-sm sm:text-base">
-              <thead className="bg-muted/60 text-muted-foreground uppercase tracking-wide text-xs">
-                <tr>
-                  <th className="px-6 py-4 font-semibold">Component</th>
-                  <th className="px-6 py-4 font-semibold">Amount</th>
-                  <th className="px-6 py-4 font-semibold">Details</th>
-                  <th className="px-6 py-4 font-semibold">Payable to</th>
-                </tr>
-              </thead>
-              <tbody>
-                {feeBreakdown.map((row) => (
-                  <tr key={row.component} className="border-t border-border/60">
-                    <td className="px-6 py-4 font-semibold text-foreground">{row.component}</td>
-                    <td className="px-6 py-4 text-primary font-semibold">{row.amount}</td>
-                    <td className="px-6 py-4 text-muted-foreground">{row.details}</td>
-                    <td className="px-6 py-4 text-muted-foreground">{row.payableTo}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="px-6 py-4 text-xs text-muted-foreground bg-muted/40">
-              * Detailed payment schedules are shared with admitted cohorts. Financing and EMI support is available through IITGN CDF partners.
-            </p>
+          <div className={styles.financingPills}>
+            <span className={styles.financingPill}>EMI Available</span>
+            <span className={styles.financingPill}>Financing Support</span>
+            <span className={styles.financingPill}>Transparent Payment Structure</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {feeCards.map((card) => (
-              <Card key={card.title} className="h-full border border-border/80 shadow-soft">
-                <CardHeader className="space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                    {card.icon}
-                  </div>
-                  <CardTitle className="text-xl text-foreground">{card.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">{card.details}</p>
-                </CardContent>
-              </Card>
+          <div className={styles.pricingGrid}>
+            {feeBreakdown.map((fee) => (
+              <article key={fee.label} className={styles.pricingCard}>
+                <p className={styles.pricingLabel}>{fee.label}</p>
+                <p className={styles.pricingAmount}>{fee.amount}</p>
+                <p className={styles.pricingDetail}>{fee.detail}</p>
+                <p className={styles.pricingPayable}>
+                  Payable to: <strong>{fee.payableTo}</strong>
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Refund Policy */}
-      <section className="py-16 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8 space-y-8">
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">Refund Policy</h3>
-            <p className="text-muted-foreground mb-4">
-              Application fees and Hostel fees are non-refundable under all circumstances, irrespective of the withdrawal date.
-            </p>
-            <p className="text-muted-foreground">
-              In case of any withdrawal request, only the tuition fee will be refunded depending on the date of withdrawal approval.
-            </p>
+      <section id="refund-policy" className="section-xl section-alt scroll-mt-28">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ProgramSectionHeader
+            eyebrow="Policy"
+            title="Refund Policy"
+            description="Tuition fee refund timelines for withdrawal requests. Application and hostel fees are non-refundable."
+          />
+
+          <div className={styles.refundGrid}>
+            {refundTimeline.map((item) => (
+              <article key={item.period} className={`${styles.refundCard} ${styles[item.variant]}`}>
+                <span className={styles.refundStatus}>{item.status}</span>
+                <p className={styles.refundPeriod}>{item.period}</p>
+                <p className={styles.refundAmount}>{item.amount}</p>
+              </article>
+            ))}
           </div>
 
-          <div className="flex justify-center">
-            <div className="rounded-sm border border-border/70 bg-card/95 shadow-soft overflow-hidden max-w-2xl w-full">
-              <div className="px-5 py-4 border-b border-border/60 bg-muted/50">
-                <h4 className="text-lg font-semibold text-foreground text-center uppercase">REFUND POLICY</h4>
-              </div>
-              <table className="w-full text-sm">
-                <thead className="text-left text-muted-foreground uppercase tracking-wide text-xs bg-muted/50">
-                  <tr>
-                    <th className="px-6 py-3 font-semibold">Period</th>
-                    <th className="px-6 py-3 font-semibold text-right">Refundable Amt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {programRefund.map((row) => (
-                    <tr key={row.period} className="border-t border-border/60">
-                      <td className="px-6 py-4 font-medium text-foreground">{row.period}</td>
-                      <td className="px-6 py-4 text-primary font-semibold text-right">{row.amount}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <p className={styles.refundDisclaimer}>
+            Application fees and hostel fees are non-refundable under all circumstances. Only the
+            tuition fee is refunded depending on the date of withdrawal approval, as per institutional
+            guidelines.
+          </p>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="py-16 lg:py-24">
+      {/* Final CTA */}
+      <section className={styles.finalCta}>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="section-navy rounded-sm p-8 lg:p-12 text-center  animate-fade-up">
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">Ready to Apply?</h2>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Don&apos;t miss this opportunity! Apply now!
-            </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 ">
-              <a
-                href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Start Your Application
+          <h2 className={styles.finalCtaTitle}>Ready to Begin Your AI Journey?</h2>
+          <p className={styles.finalCtaDesc}>
+            Join IIT Gandhinagar&apos;s immersive residential learning ecosystem and accelerate your
+            career in AI, ML and Agentic Systems.
+          </p>
+
+          <div className={styles.finalCtaActions}>
+            <Button asChild size="lg" variant="ctaOnDark">
+              <a {...applicationFormLinkProps} className="hover:no-underline hover:text-[#0B1F4D]">
+                Apply Now
+                <CtaArrow />
               </a>
             </Button>
+            <BrochureDownloadButton premium size="lg" variant="ctaOnDark" />
+          </div>
+
+          <div className={styles.trustBadges}>
+            {trustBadges.map((badge) => (
+              <span key={badge} className={styles.trustBadge}>
+                <Check className={styles.trustCheck} aria-hidden="true" />
+                {badge}
+              </span>
+            ))}
           </div>
         </div>
-      </section> */}
-      <section className="py-16 lg:py-24">
-  <div className="container mx-auto px-4 lg:px-8">
-    <div className="
-      rounded-sm 
-      p-8 lg:p-12 
-      text-center 
-       
-      animate-fade-up
-      bg-gradient-to-br 
-from-purple-600 
-via-indigo-600 
-to-violet-600
-
-    ">
-      <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-        Ready to Apply?
-      </h2>
-
-      <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-        Don&apos;t miss this opportunity! Apply now!
-      </p>
-
-      <Button 
-        asChild 
-        size="lg" 
-        className="bg-white text-primary hover:bg-white/90 "
-      >
-        <a
-          href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Start Your Application
-        </a>
-      </Button>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       <Footer />
     </div>
@@ -506,4 +486,3 @@ to-violet-600
 };
 
 export default Admissions;
-
