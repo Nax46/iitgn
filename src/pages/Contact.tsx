@@ -33,14 +33,6 @@ const CONTACT_PROGRAM_OPTIONS = [
     label: "PG Diploma in AI-ML & Agentic AI Engineering",
   },
   {
-    value: "data-science",
-    label: "PG Diploma in GenAI-Powered Data Science & Engineering",
-  },
-  {
-    value: "software-cloud",
-    label: "PG Diploma in AI Driven Cloud based Software Development",
-  },
-  {
     value: "not-sure",
     label: "I'm still exploring my options",
   },
@@ -254,9 +246,9 @@ const Contact = () => {
       <Header />
 
       {/* --- HERO SECTION (UNIFIED STYLE) --- */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+          <div className="max-w-4xl mx-auto text-center animate-fade-up">
 
             {/* ICON */}
             <Phone className="w-16 h-16 text-primary mx-auto mb-6" />
@@ -264,7 +256,7 @@ const Contact = () => {
             {/* TITLE */}
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
               Get in Touch with{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 IITGN CDF
               </span>
             </h1>
@@ -280,7 +272,7 @@ const Contact = () => {
            <Button
   size="lg"
   variant="cta"
-  className="rounded-full px-6"
+  className="px-6"
   onClick={() => {
     window.open(
       "https://mail.google.com/mail/?view=cm&fs=1&to=admission.caa@iitgn.ac.in",
@@ -294,7 +286,7 @@ const Contact = () => {
 
 
 
-              <Button asChild size="lg" variant="ctaOutline" className="rounded-full px-6">
+              <Button asChild size="lg" variant="ctaOutline" className="px-6">
                 <Link to="/faq">Browse FAQs</Link>
               </Button>
             </div>
@@ -356,7 +348,7 @@ const Contact = () => {
       <section className="py-16 lg:py-24 bg-muted/50">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-card shadow-large rounded-2xl p-8 md:p-12">
+            <div className="bg-card  rounded-2xl p-8 md:p-12">
               <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 text-center">
                 Get in Touch!
               </h2>
@@ -447,7 +439,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full rounded-full py-6"
+                  className="w-full py-6"
                   size="lg"
                   variant="cta"
                   disabled={isSubmitting}
@@ -526,17 +518,17 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="shadow-large">
+            <Card className="">
               <CardContent className="p-8 text-center">
                 <h3 className="text-xl font-bold text-foreground mb-4">Schedule a Campus Visit</h3>
                 <p className="text-muted-foreground mb-6">
                   Campus visits are available by prior appointment only (Monday–Friday)
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Button asChild size="lg" variant="cta" className="rounded-full px-6">
+                  <Button asChild size="lg" variant="cta" className="px-6">
                     <a href="mailto:visit@iitgncdf.ac.in">Email to Schedule Visit</a>
                   </Button>
-                  <Button asChild size="lg" variant="ctaOutline" className="rounded-full px-6">
+                  <Button asChild size="lg" variant="ctaOutline" className="px-6">
                     <a href="tel:+917923950000">Call to Schedule</a>
                   </Button>
                 </div>
@@ -559,7 +551,7 @@ const Contact = () => {
             <div className="flex justify-center space-x-6">
               <a
                 href="#"
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
                 title="Follow us on LinkedIn"
                 aria-label="Visit our LinkedIn profile"
               >
@@ -567,7 +559,7 @@ const Contact = () => {
               </a>
               <a
                 href="#"
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
                 title="Follow us on Twitter"
                 aria-label="Visit our Twitter profile"
               >
@@ -575,7 +567,7 @@ const Contact = () => {
               </a>
               <a
                 href="#"
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
                 title="Follow us on Facebook"
                 aria-label="Visit our Facebook page"
               >
@@ -583,7 +575,7 @@ const Contact = () => {
               </a>
               <a
                 href="#"
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
                 title="Follow us on Instagram"
                 aria-label="Visit our Instagram profile"
               >
@@ -591,7 +583,7 @@ const Contact = () => {
               </a>
               <a
                 href="#"
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center transition-colors"
                 title="Subscribe to our YouTube channel"
                 aria-label="Visit our YouTube channel"
               >
@@ -618,7 +610,7 @@ const Contact = () => {
                 { to: "/faq", text: "FAQ" },
                 { to: "/about", text: "About Us" },
               ].map((link, index) => (
-                <Button key={index} asChild variant="ctaOutline" className="w-full rounded-full">
+                <Button key={index} asChild variant="ctaOutline" className="w-full">
                   <Link to={link.to}>{link.text}</Link>
                 </Button>
               ))}

@@ -2,117 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Design System Definition
-  All colors use HSL for better maintainability and theme support
-  Gradients, shadows, and transitions defined as CSS variables
-*/
+/* IITGN CDF — Institutional Academic Design System */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 220 45% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 45% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 45% 14%;
 
-    --primary: 237 80% 58%;
+    /* Deep Navy */
+    --primary: 220 55% 16%;
     --primary-foreground: 0 0% 100%;
-    --primary-dark: 242 75% 45%;
+    --primary-dark: 220 55% 12%;
 
-    --secondary: 262 83% 58%;
+    /* IIT-inspired Blue */
+    --secondary: 210 58% 32%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 210 22% 96%;
+    --muted-foreground: 215 18% 42%;
 
-    --accent: 180 78% 58%;
-    --accent-foreground: 222 47% 11%;
+    /* Subtle Gold Accent */
+    --accent: 43 52% 44%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 237 80% 58%;
+    --border: 214 22% 86%;
+    --input: 214 22% 86%;
+    --ring: 210 58% 32%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
-    /* Custom gradients - optimized for performance */
-    --gradient-primary: linear-gradient(
-      135deg,
-      hsl(237 80% 58%) 0%,
-      hsl(262 83% 58%) 100%
-    );
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(237 80% 58%) 0%,
-      hsl(242 75% 45%) 50%,
-      hsl(262 83% 58%) 100%
-    );
-    --gradient-subtle: linear-gradient(
-      180deg,
-      hsl(0 0% 100%) 0%,
-      hsl(237 80% 98%) 100%
-    );
+    /* Solid section backgrounds — no loud gradients */
+    --gradient-primary: hsl(220 55% 16%);
+    --gradient-hero: hsl(220 55% 14%);
+    --gradient-subtle: hsl(210 25% 97%);
 
-    /* Optimized shadows with reduced blur for performance */
-    --shadow-soft: 0 4px 6px -1px hsl(237 80% 58% / 0.1),
-      0 2px 4px -1px hsl(237 80% 58% / 0.06);
-    --shadow-medium: 0 10px 15px -3px hsl(237 80% 58% / 0.15),
-      0 4px 6px -2px hsl(237 80% 58% / 0.05);
-    --shadow-large: 0 20px 25px -5px hsl(237 80% 58% / 0.2),
-      0 10px 10px -5px hsl(237 80% 58% / 0.1);
-  }
-
-  .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 15%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 15%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 237 80% 58%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 262 83% 58%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 180 78% 58%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 237 80% 58%;
-
-    --gradient-primary: linear-gradient(
-      135deg,
-      hsl(237 80% 58%) 0%,
-      hsl(262 83% 58%) 100%
-    );
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(237 80% 58%) 0%,
-      hsl(242 75% 45%) 50%,
-      hsl(262 83% 58%) 100%
-    );
-    --gradient-subtle: linear-gradient(
-      180deg,
-      hsl(222 47% 11%) 0%,
-      hsl(237 80% 15%) 100%
-    );
+    --shadow-soft: 0 1px 2px hsl(220 45% 14% / 0.05);
+    --shadow-medium: 0 2px 8px hsl(220 45% 14% / 0.07);
+    --shadow-large: 0 4px 16px hsl(220 45% 14% / 0.09);
   }
 }
 
@@ -121,20 +56,39 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
   }
 
-  /* Optimize rendering performance */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+  }
+
   img {
-    @apply block;
+    @apply block max-w-full;
   }
 }
 
-/* Performance optimization: reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -150,7 +104,84 @@
   }
 
   a {
-    @apply hover:text-primary no-underline;
+    @apply hover:text-secondary no-underline;
+  }
+}
+
+@layer components {
+  .section-spacing {
+    @apply py-14 lg:py-20;
+  }
+
+  .section-muted {
+    background-color: hsl(var(--muted));
+  }
+
+  .section-navy {
+    background-color: hsl(var(--gradient-hero));
+    color: hsl(0 0% 100%);
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-secondary;
+  }
+
+  .eyebrow-light {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent;
+  }
+
+  .text-display-md {
+    @apply font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-foreground;
+  }
+
+  .text-display-sm {
+    @apply font-serif text-2xl sm:text-3xl lg:text-[2rem] font-semibold tracking-tight text-foreground;
+  }
+
+  .text-heading-md {
+    @apply font-serif text-xl lg:text-2xl font-semibold tracking-tight text-foreground;
+  }
+
+  .text-heading-lg {
+    @apply font-serif text-xl lg:text-[1.625rem] font-semibold tracking-tight text-foreground;
+  }
+
+  .text-lead {
+    @apply text-base lg:text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .card-panel {
+    @apply rounded-sm border border-border bg-card text-card-foreground;
+  }
+
+  .card-elevated {
+    @apply card-panel;
+  }
+
+  .card-interactive {
+    @apply card-panel transition-colors duration-200 hover:border-secondary/40;
+  }
+
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium text-foreground/75 transition-colors duration-200
+      hover:text-primary hover:no-underline focus-visible:no-underline;
+  }
+
+  .nav-link-active {
+    @apply text-primary font-semibold;
+  }
+
+  .nav-link-active::after {
+    content: "";
+    @apply absolute bottom-0 left-3 right-3 h-0.5 bg-accent;
+  }
+
+  .icon-box {
+    @apply flex h-10 w-10 items-center justify-center rounded-sm bg-primary text-primary-foreground;
+  }
+
+  .icon-box-secondary {
+    @apply flex h-10 w-10 items-center justify-center rounded-sm bg-secondary text-secondary-foreground;
   }
 }
 
@@ -161,34 +192,5 @@
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-
-  .panorama-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary)) transparent;
-  }
-
-  .panorama-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .panorama-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .panorama-scroll::-webkit-scrollbar-thumb {
-    background-color: hsla(var(--primary) / 0.6);
-    border-radius: 9999px;
-  }
-
-  @media (pointer: coarse) {
-    .panorama-scroll {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .panorama-scroll::-webkit-scrollbar {
-      display: none;
-    }
   }
 }

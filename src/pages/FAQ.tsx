@@ -131,7 +131,7 @@ const technicalFAQs = [
   },
   {
     question: "Do I need to know Python before joining?",
-    answer: "Basic familiarity with any programming language is required. Python is taught and reinforced throughout the programs, especially in AI and Data Science tracks.",
+    answer: "Basic familiarity with any programming language is required. Python is taught and reinforced throughout the program, especially in AI-ML and Agentic AI modules.",
   },
   {
     question: "Will I work on real-world projects?",
@@ -164,9 +164,9 @@ const FAQ = () => {
       <Header />
 
       {/* --- HERO SECTION (UNIFIED STYLE) --- */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+          <div className="max-w-4xl mx-auto text-center animate-fade-up">
 
             {/* ICON */}
             <HelpCircle className="w-16 h-16 text-primary mx-auto mb-6" />
@@ -174,7 +174,7 @@ const FAQ = () => {
             {/* TITLE */}
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
               Frequently Asked{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 Questions
               </span>
             </h1>

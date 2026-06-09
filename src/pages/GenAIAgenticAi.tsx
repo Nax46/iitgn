@@ -226,9 +226,9 @@ const GenAIAgenticEngineering = () => {
             { icon: <Clock />, value: "600+ Contact Hours", label: "Total Duration" },
             { icon: <Brain />, label: "Mode", value: "Full-Time Residential" },
           ].map((item, idx) => (
-            <Card key={idx} className="shadow-large">
+            <Card key={idx} className="">
               <CardContent className="p-6 text-center">
-                <div className="mx-auto w-12 h-12 flex items-center justify-center bg-gradient-primary text-primary-foreground rounded-lg mb-4">
+                <div className="mx-auto w-12 h-12 flex items-center justify-center bg-primary text-primary-foreground rounded-lg mb-4">
                   {item.icon}
                 </div>
                 <p className="text-sm text-muted-foreground">{item.label}</p>
@@ -255,7 +255,7 @@ const GenAIAgenticEngineering = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">Curriculum Structure</h2>
           <div className="space-y-10">
             {modules.map((mod, idx) => (
-              <Card key={idx} className="shadow-large">
+              <Card key={idx} className="">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold text-foreground mb-4">{mod.title}</h3>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1 text-sm">
@@ -278,7 +278,7 @@ const GenAIAgenticEngineering = () => {
           </p>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button size="lg" className="rounded-full px-8 py-6 text-base font-semibold">
+              <Button size="lg" className="px-8 py-6 text-base font-semibold">
                 Download Curriculum
               </Button>
             </DialogTrigger>
@@ -337,7 +337,7 @@ const GenAIAgenticEngineering = () => {
 
       {/* CTA */}
       <section className="py-20 text-center">
-        <Button asChild size="lg" variant="cta" className="rounded-full px-10">
+        <Button asChild size="lg" variant="cta" className="px-10">
           <Link to="/admissions">Apply Now</Link>
         </Button>
       </section>

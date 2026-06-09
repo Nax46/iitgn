@@ -33,7 +33,7 @@ const ModuleAccordion = ({ modules }: ModuleAccordionProps) => {
             className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-muted/50 transition-colors"
           >
             <div className="flex items-center space-x-4 flex-1">
-              <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold flex-shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold flex-shrink-0">
                 {module.number}
               </div>
               <div className="flex-1">

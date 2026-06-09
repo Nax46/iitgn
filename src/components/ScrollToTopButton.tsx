@@ -31,15 +31,14 @@ const ScrollToTopButton = () => {
       aria-label="Scroll to top"
       onClick={handleClick}
       className={cn(
-        "fixed bottom-6 right-6 z-50 rounded-full bg-gradient-primary text-primary-foreground shadow-large transition-all duration-300 focus-visible:ring-offset-4",
-        "h-12 w-12 flex items-center justify-center",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+        "fixed bottom-6 right-6 z-50 rounded-sm bg-primary text-primary-foreground border border-primary shadow-medium transition-opacity duration-200 focus-visible:ring-offset-4",
+        "h-10 w-10 flex items-center justify-center",
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none",
       )}
     >
-      <ArrowUp className="w-5 h-5" />
+      <ArrowUp className="w-4 h-4" />
     </button>
   );
 };
 
 export default ScrollToTopButton;
-

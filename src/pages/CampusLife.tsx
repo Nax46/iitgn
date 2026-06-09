@@ -230,10 +230,10 @@ const CampusLife = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="hover:shadow-large transition-all duration-300 hover:-translate-y-2 motion-safe:animate-fade-in"
+                className="card-interactive motion-safe:animate-fade-in"
               >
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
                     <div className="text-primary-foreground">{feature.icon}</div>
                   </div>
                   <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
@@ -246,7 +246,7 @@ const CampusLife = () => {
       </section>
 
       {/* Masonry Galleries */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">IITGN Campus Media</h2>
@@ -258,7 +258,7 @@ const CampusLife = () => {
             {masonryCategories.map((category, index) => (
               <article
                 key={category.title}
-                className="rounded-3xl border border-border bg-card/80 shadow-soft p-6 lg:p-10 motion-safe:animate-fade-in"
+                className="rounded-3xl border border-border bg-card shadow-soft p-6 lg:p-10 motion-safe:animate-fade-in"
               >
                 <div className="mb-8">
                   <h3 className="text-2xl lg:text-3xl font-bold text-foreground">{category.title}</h3>
@@ -271,7 +271,7 @@ const CampusLife = () => {
                   }}
                 >
                   {category.media.map((src, mediaIndex) => (
-                    <figure key={src} className="break-inside-avoid rounded-2xl overflow-hidden shadow-soft">
+                    <figure key={src} className="break-inside-avoid rounded-sm overflow-hidden shadow-soft">
                       <img
                         src={src}
                         alt={`${category.title} moment ${mediaIndex + 1}`}
@@ -316,7 +316,7 @@ const CampusLife = () => {
                           src,
                         })
                       }
-                      className="group relative rounded-2xl overflow-hidden shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="group relative rounded-sm overflow-hidden shadow-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       aria-label={`Open ${category.title} image ${mediaIndex + 1}`}
                     >
                       <img
@@ -349,7 +349,7 @@ const CampusLife = () => {
               {panoramaShots.map((shot, index) => (
                 <figure
                   key={shot.title}
-                  className="relative min-w-[280px] sm:min-w-[420px] lg:min-w-[560px] snap-start rounded-[2rem] overflow-hidden shadow-large motion-safe:animate-fade-in"
+                  className="relative min-w-[280px] sm:min-w-[420px] lg:min-w-[560px] snap-start rounded-[2rem] overflow-hidden  motion-safe:animate-fade-in"
                 >
                   <img
                     src={shot.image}
@@ -380,10 +380,10 @@ const CampusLife = () => {
               {whyResidential.map((reason, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-large transition-all duration-300 hover:-translate-y-2 text-center"
+                  className="card-interactive text-center"
                 >
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
                       <div className="text-primary-foreground">{reason.icon}</div>
                     </div>
                     <h3 className="font-bold text-foreground mb-3">{reason.title}</h3>
@@ -400,7 +400,7 @@ const CampusLife = () => {
       <section className="py-16 lg:py-24 bg-muted/50">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="shadow-large">
+            <Card className="">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-4">Academic Infrastructure</h3>
                 <ul className="space-y-3 text-muted-foreground">
@@ -420,7 +420,7 @@ const CampusLife = () => {
               </CardContent>
             </Card>
 
-            <Card className="shadow-large">
+            <Card className="">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-4">Student Support Services</h3>
                 <ul className="space-y-3 text-muted-foreground">
@@ -454,7 +454,7 @@ const CampusLife = () => {
       <Dialog open={Boolean(activeMedia)} onOpenChange={(open) => !open && setActiveMedia(null)}>
         <DialogContent className="max-w-4xl border-none bg-transparent shadow-none p-0">
           {activeMedia && (
-            <div className="bg-card rounded-3xl overflow-hidden shadow-large">
+            <div className="bg-card rounded-3xl overflow-hidden ">
               <img
                 src={activeMedia.src}
                 alt={activeMedia.title}

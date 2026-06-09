@@ -16,111 +16,44 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
-// --- CONFIGURATION ---
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxISXHhQQdF6ZAQ4Ex3bVbLOMvF4x1Xm2ZH7c_D6z1hOpx3xJZ7jo3ujl-WuqhHCt0a/exec";
 
-// Map selections to specific PDF files
-const programPdfMap: Record<string, { path: string; fileName: string }> = {
-  "data-science": {
-    path: "/images/Data%20Science%20%26%20Engineering.pdf",
-    fileName: "IITGN-Data-Science-Curriculum.pdf"
-  },
-  "aiml": {
-    path: "/images/Curriculum%20%26%20Learning%20Journey%20-%20AI-ML%20%26%20Agentic%20AI%20Engineering.pdf",
-    fileName: "IITGN-AIML-Curriculum.pdf"
-  },
-  "software-cloud": {
-    path: "/images/Curriculum%20%26%20Learning%20Journey%20-%20Cloud%20based%20Software%20Development.pdf",
-    fileName: "IITGN-Cloud-Software-Curriculum.pdf"
-  }
-};
-
-const programOptions = [
-  { value: "data-science", label: "Data Science & Engineering" },
-  { value: "aiml", label: "AI-ML & Agentic AI Engineering" },
-  { value: "software-cloud", label: "Cloud Based Software Development" }
-];
-
-const defaultProgram = "data-science";
-
-type Program = {
-  title: string;
-  imgSrc: string;
-  description: string;
-  link: string;
-  highlights: string[];
+const curriculumPdf = {
+  path: "/images/Curriculum%20%26%20Learning%20Journey%20-%20AI-ML%20%26%20Agentic%20AI%20Engineering.pdf",
+  fileName: "IITGN-AIML-Curriculum.pdf",
 };
 
 type GeneralFormState = {
   name: string;
   email: string;
   phone: string;
-  program: string;
 };
 
 const initialFormState: GeneralFormState = {
   name: "",
   email: "",
   phone: "",
-  program: defaultProgram
 };
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const programs: Program[] = [
-  {
-    title: "PG Diploma in GenAI-Powered Data Science & Engineering",
-    imgSrc: "/programs/DSE.jpg",
-    description:
-      "Learn to design, implement, and scale data pipelines and machine learning infrastructure.",
-    link: "/gen-ai-data-science",
-    highlights: [
-      "AutoML and big data platforms",
-      "Cloud data warehousing",
-      "MLOps and model deployment",
-      "Foundational AI and mathematical skills",
-      "Real-world project experience",
-    ],
-  },
-  {
-    title: "PG Diploma in AI-ML & Agentic AI Engineering",
-    imgSrc: "/programs/AIA.jpg",
-    description:
-      "Deep dive into advanced AI methodologies, agentic systems, ethical AI, and responsible governance.",
-    link: "/gen-ai-agentic-aiml",
-    highlights: [
-      "Advanced AI methodologies",
-      "Agentic AI systems",
-      "Ethical AI principles",
-      "Responsible AI governance",
-      "Scalable AI solutions",
-    ],
-  },
-  {
-    title: "PG Diploma in AI Driven Cloud based Software Development",
-    imgSrc: "/programs/SEAI.JPG",
-    description:
-      "Explore generative AI and agentic AI techniques applied to software development life cycles.",
-    link: "/gen-ai-software-cloud",
-    highlights: [
-      "Modern DevOps practices",
-      "Cloud-native architectures",
-      "AI-augmented software applications",
-      "Generative AI integration",
-      "Agentic AI systems design",
-    ],
-  },
-];
+const program = {
+  title: "PG Diploma in AI-ML & Agentic AI Engineering",
+  imgSrc: "/programs/AIA.jpg",
+  description:
+    "Deep dive into advanced AI methodologies, agentic systems, ethical AI, and responsible governance.",
+  link: "/gen-ai-agentic-aiml",
+  highlights: [
+    "Advanced AI methodologies",
+    "Agentic AI systems",
+    "Ethical AI principles",
+    "Responsible AI governance",
+    "Scalable AI solutions",
+  ],
+};
 
 const feeStructure = [
   {
@@ -156,12 +89,9 @@ const Programs = () => {
     };
 
   const triggerDownload = () => {
-    // Determine which file to download based on selection, or default to Data Science if something goes wrong
-    const pdfMeta = programPdfMap[formData.program] ?? programPdfMap[defaultProgram];
-    
     const link = document.createElement("a");
-    link.href = pdfMeta.path;
-    link.download = pdfMeta.fileName;
+    link.href = curriculumPdf.path;
+    link.download = curriculumPdf.fileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -169,7 +99,7 @@ const Programs = () => {
 
   const handleDownloadCurriculum = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
       setFormError("Please fill out all fields so we can share the brochure.");
       return;
@@ -179,21 +109,16 @@ const Programs = () => {
     setIsSubmitting(true);
 
     try {
-      // 1. Send data to Google Sheet
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, program: "aiml" }),
       });
 
-      // 2. Trigger Download
       triggerDownload();
-
-      // 3. Reset
       setFormData(initialFormState);
       setIsDialogOpen(false);
     } catch (error) {
       console.error("Submission failed", error);
-      // Fallback download
       triggerDownload();
       setIsDialogOpen(false);
     } finally {
@@ -205,59 +130,38 @@ const Programs = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* ---------------- HERO SECTION (PLACEMENTS-STYLE) ---------------- */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+      <section className="section-muted border-b border-border pt-28 pb-12 lg:pt-32 lg:pb-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-
-            {/* ICON */}
-            <GraduationCap className="w-16 h-16 text-primary mx-auto mb-6" />
-
-            {/* TITLE */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-              Future-Ready{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Learning Tracks
-              </span>
+          <div className="max-w-3xl animate-fade-up">
+            <p className="eyebrow mb-3">Academic Programs</p>
+            <GraduationCap className="w-10 h-10 text-secondary mb-4" aria-hidden="true" />
+            <h1 className="text-display-md mb-4">
+              Future Ready <span className="text-secondary">Skill Development Program</span>
             </h1>
-
-            {/* DESCRIPTION */}
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              Explore IIT Gandhinagar's immersive specializations in AI, software engineering, and data
-              science—crafted to mirror the clarity and focus of our placement-ready cohorts.
+            <p className="text-lead max-w-2xl">
+              Explore IIT Gandhinagar&apos;s immersive specialization in AI-ML and Agentic Engineering,
+              crafted to mirror the clarity and focus of our placement-ready cohort.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Choose Your Track */}
       <section className="py-10 lg:py-14">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              Choose Your Track
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Three Immersive PG Diplomas Built with Industry Mentors
-            </h2>
-          </div>
-
-          {/* Brochure Download Box */}
-          <div className="mt-8 max-w-2xl mx-auto">
-            <Card className="border border-primary/20 bg-primary/5 shadow-soft rounded-2xl">
-              <CardContent className="p-6 flex flex-col items-center gap-3 text-center">
-                <p className="text-sm text-muted-foreground max-w-xl">
-                  Download the consolidated IITGN CDF PG Diploma brochure to explore curriculum highlights,
-                  campus experience, and admission details in one place.
+          <div className="max-w-2xl mx-auto">
+            <Card className="card-elevated border-primary/20 bg-primary/5">
+              <CardContent className="p-6 flex flex-col items-center gap-4 text-center">
+                <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">
+                  Download the IITGN CDF PG Diploma brochure to explore curriculum highlights,
+                  campus experience, and admission details.
                 </p>
-                
-                {/* --- FORM DIALOG START --- */}
+
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
-                      className="rounded-full px-8 border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                    <Button
+                      size="lg"
+                      variant="ctaOutline"
+                      className="px-8"
                     >
                       Download Brochure
                     </Button>
@@ -266,7 +170,7 @@ const Programs = () => {
                     <DialogHeader>
                       <DialogTitle>Tell us a bit about you</DialogTitle>
                       <DialogDescription>
-                        Fill this short form to unlock the detailed brochure and curriculum details.
+                        Fill this short form to unlock the detailed brochure and curriculum.
                       </DialogDescription>
                     </DialogHeader>
                     <form onSubmit={handleDownloadCurriculum} className="space-y-4">
@@ -302,142 +206,100 @@ const Programs = () => {
                           required
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label>Program Interest</Label>
-                        <Select
-                          value={formData.program}
-                          onValueChange={(value) => setFormData((prev) => ({ ...prev, program: value }))}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a program" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {programOptions.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
                       {formError && <p className="text-sm text-destructive">{formError}</p>}
                       <DialogFooter>
-                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                        <Button type="submit" variant="cta" className="w-full" disabled={isSubmitting}>
                           {isSubmitting ? "Processing..." : "Download Brochure"}
                         </Button>
                       </DialogFooter>
                     </form>
                   </DialogContent>
                 </Dialog>
-                {/* --- FORM DIALOG END --- */}
-
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* ---------------- PROGRAMS SECTION ---------------- */}
-      <section className="relative py-16 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.08),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(236,72,153,0.08),transparent_40%)]" />
-
-        <div className="container mx-auto px-4 lg:px-8 relative">
-          <div className="space-y-12 lg:space-y-16">
-            {programs.map((program, index) => (
-              <div key={program.title}>
-                <Card
-                  className="group relative overflow-hidden border border-border/70 bg-card/90 backdrop-blur-sm transition-all duration-500 animate-fade-in hover:shadow-large"
-                  style={{ animationDelay: `${index * 120}ms` }}
-                >
-                  <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary/0 via-primary/40 to-primary/0" />
-
-                  <div className="grid md:grid-cols-2 items-stretch">
-                    {/* IMAGE */}
-                    <div className="relative min-h-[280px] overflow-hidden">
-                      <img
-                        src={program.imgSrc}
-                        alt={program.title}
-                        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-smooth group-hover:scale-105"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent opacity-90" />
-                    </div>
-
-                    {/* CONTENT */}
-                    <div className="flex flex-col h-full">
-                      <CardHeader className="space-y-4">
-                        <div className="flex flex-wrap items-center gap-4">
-                          <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">
-                            {program.title}
-                          </CardTitle>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            size="sm"
-                            className="bg-primary/10 border-primary/50 text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                          >
-                            <Link to={program.link} onClick={scrollToTop} className="group flex items-center gap-2">
-                              <span>Know More</span>
-                              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                            </Link>
-                          </Button>
-                        </div>
-
-                        <CardDescription className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                          {program.description}
-                        </CardDescription>
-                      </CardHeader>
-
-                      <CardContent className="mt-auto">
-                        <div className="rounded-2xl border border-border/60 bg-muted/20 p-6 shadow-soft">
-                          <h4 className="font-semibold text-foreground mb-4 tracking-tight">Key Highlights</h4>
-                          <ul className="space-y-3">
-                            {program.highlights.map((highlight) => (
-                              <li key={highlight} className="flex items-start gap-3">
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
-                                  <CheckCircle className="h-4 w-4 text-primary" />
-                                </span>
-                                <span className="text-muted-foreground leading-snug">{highlight}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </Card>
-
-                {/* Common Foundation pointer after Data Science program (first program) */}
-                {index === 0 && (
-                  <div className="mt-8 max-w-3xl mx-auto">
-                    <Card className="border border-primary/20 bg-primary/5">
-                      <CardContent className="p-6">
-                        <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
-                          <span className="font-semibold text-primary">Common Foundation (First 6 Weeks):</span>{" "}
-                          All learners begin their journey with a common foundation. Based on your performance in the diagnostic phase, you'll specialize in one of the tracks given above.
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                )}
-              </div>
-            ))}
+      <section className="relative section-spacing">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center space-y-4 mb-12 lg:mb-16 animate-fade-up">
+            <h2 className="text-display-sm text-foreground">
+              An Immersive PG Diploma with Pathways to Multiple Job Families in the AI-ML and Agentic AI Space
+            </h2>
           </div>
 
-          {/* Fee Structure */}
+          <Card className="card-panel max-w-5xl mx-auto overflow-hidden border-t-4 border-t-accent">
+            <div className="grid md:grid-cols-2 items-stretch">
+              <div className="relative min-h-[240px] overflow-hidden border-b md:border-b-0 md:border-r border-border">
+                <img
+                  src={program.imgSrc}
+                  alt={program.title}
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="flex flex-col h-full">
+                <CardHeader className="space-y-4 p-6 lg:p-8">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <CardTitle className="text-heading-lg text-foreground">
+                      {program.title}
+                    </CardTitle>
+
+                    <Button asChild variant="ctaOutline" size="sm">
+                      <Link to={program.link} onClick={scrollToTop} className="group flex items-center gap-2">
+                        <span>Know More</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    </Button>
+                  </div>
+
+                  <CardDescription className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                    {program.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent className="mt-auto p-6 lg:p-8 pt-0">
+                  <div className="border border-border bg-muted/30 p-5">
+                    <h4 className="text-sm font-semibold uppercase tracking-wide text-foreground mb-3">Key Highlights</h4>
+                    <ul className="space-y-2.5">
+                      {program.highlights.map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-3">
+                          <CheckCircle className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
+                          <span className="text-muted-foreground leading-snug">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </div>
+            </div>
+          </Card>
+
+          <div className="mt-12 max-w-3xl mx-auto animate-fade-up animation-delay-200">
+            <Card className="border border-primary/20 bg-primary/5">
+              <CardContent className="p-6">
+                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed text-center">
+                  <span className="font-semibold text-primary">Common Foundation (First 6 Weeks):</span>{" "}
+                  All learners begin with a shared foundation in AI-ML fundamentals before deepening into agentic systems and production engineering.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
           <div className="mt-16 lg:mt-20">
             <div className="max-w-3xl mx-auto text-center mb-8">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
                 Fee Structure
               </p>
-              <h3 className="text-3xl font-bold text-foreground mt-2">Transparent Program Investment</h3>
-              <p className="text-muted-foreground mt-3">
+              <h3 className="text-heading-md text-foreground mt-2">Transparent Program Investment</h3>
+              <p className="text-muted-foreground mt-3 leading-relaxed">
                 Covers academic delivery, labs, residential experience, and admissions processing.
               </p>
             </div>
-            <div className="overflow-hidden rounded-3xl border border-border/70 bg-card/90 shadow-large">
-              <table className="w-full text-left text-sm sm:text-base">
+            <div className="overflow-x-auto card-panel">
+              <table className="w-full min-w-[640px] text-left text-sm sm:text-base">
                 <thead className="bg-muted/60 text-muted-foreground uppercase tracking-wide text-xs">
                   <tr>
                     <th className="px-6 py-4 font-semibold">Component</th>
@@ -463,17 +325,16 @@ const Programs = () => {
             </div>
           </div>
 
-          {/* CTA SECTION */}
           <div className="mt-16 lg:mt-24 text-center">
-            <div className="bg-gradient-hero rounded-2xl p-8 lg:p-12 shadow-large animate-scale-in">
-              <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+            <div className="section-navy px-6 py-10 lg:px-10 lg:py-12 text-center border border-primary/20">
+              <p className="eyebrow-light mb-2">Admissions Open</p>
+              <h2 className="font-serif text-2xl lg:text-3xl font-semibold text-white mb-3">
                 Ready to Begin Your Journey?
               </h2>
-              <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-                Apply now and take the first step towards building future-ready skills in AI, Data
-                Science, and Software Development.
+              <p className="text-base text-white/85 mb-6 max-w-2xl mx-auto leading-relaxed">
+                Apply now and take the first step towards building future-ready skills in AI-ML and Agentic AI Engineering.
               </p>
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 shadow-large">
+              <Button asChild size="lg" variant="ctaOnDark">
                 <Link to="/admissions">Apply for a Program</Link>
               </Button>
             </div>

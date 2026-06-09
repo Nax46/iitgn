@@ -151,9 +151,9 @@ const Admissions = () => {
       <Header />
 
       {/* ---------------- HERO SECTION (PLACEMENTS STYLE) ---------------- */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+          <div className="max-w-4xl mx-auto text-center animate-fade-up">
 
             {/* ICON */}
             <ClipboardList className="w-16 h-16 text-primary mx-auto mb-6" />
@@ -161,7 +161,7 @@ const Admissions = () => {
             {/* TITLE */}
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight">
               Start Your{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 Application
               </span>
             </h1>
@@ -173,7 +173,7 @@ const Admissions = () => {
             </p>
 
             {/* CTA */}
-            <Button asChild size="lg" variant="cta" className="rounded-full px-8">
+            <Button asChild size="lg" variant="cta" className="px-8">
               <a
                 href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"
                 target="_blank"
@@ -190,7 +190,7 @@ const Admissions = () => {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] items-start">
-            <article className="rounded-[2.5rem] border border-border/70 bg-card/95 p-6 sm:p-8 lg:p-10 shadow-large">
+            <article className="border border-border/70 bg-card/95 p-6 sm:p-8 lg:p-10 ">
               <div className="mb-8 text-center lg:text-left">
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">Application Process</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
@@ -201,12 +201,12 @@ const Admissions = () => {
                 {steps.map((step, index) => (
                   <li key={step.title} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary text-primary-foreground font-semibold shadow-soft">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-soft">
                         {index + 1}
                       </span>
                       {index < steps.length - 1 && <span className="mt-2 h-full w-px bg-border/70" aria-hidden="true" />}
                     </div>
-                    <div className="flex-1 rounded-2xl border border-border/80 bg-muted/30 p-5 shadow-soft">
+                    <div className="flex-1 rounded-sm border border-border/80 bg-muted/30 p-5 shadow-soft">
                       <div className="flex items-center gap-3 text-primary">
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                           {step.icon}
@@ -220,7 +220,7 @@ const Admissions = () => {
               </ol>
             </article>
 
-            <Card className="rounded-[2rem] border border-border/70 shadow-large">
+            <Card className="rounded-[2rem] border border-border/70 ">
               <CardHeader className="space-y-3">
                 <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">Eligibility Criteria</CardTitle>
                 <CardDescription className="text-base lg:text-lg">
@@ -237,7 +237,7 @@ const Admissions = () => {
                   ))}
                 </ul>
 
-                <div className="rounded-2xl bg-primary/5 border border-primary/20 p-5">
+                <div className="rounded-sm bg-primary/5 border border-primary/20 p-5">
                   <h4 className="text-base font-semibold text-primary mb-2">Additional Consideration</h4>
                   <p className="text-muted-foreground">
                     Candidates with strong programming skills or industry experience may be considered even with slightly lower grades (Academic Committee discretion).
@@ -266,7 +266,7 @@ const Admissions = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
             <div className="space-y-6">
-              <div className="rounded-[2.5rem] border border-primary/30 bg-card/95 shadow-large p-8 lg:p-10 text-center lg:text-left">
+              <div className="border border-primary/30 bg-card/95  p-8 lg:p-10 text-center lg:text-left">
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-3">Admission Process</p>
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
                   Two Rounds to Evaluate Skill & Potential
@@ -274,7 +274,7 @@ const Admissions = () => {
                 <p className="text-muted-foreground mt-4">
                   Begin with the proctored All India National Proficiency Test (AINPT), followed by a personal interview with industry mentors.
                 </p>
-                <Button asChild size="lg" variant="cta" className="mt-8 rounded-full px-8">
+                <Button asChild size="lg" variant="cta" className="mt-8 px-8">
                   <a href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462" target="_blank" rel="noopener noreferrer">
                     Apply Now
                   </a>
@@ -293,7 +293,7 @@ const Admissions = () => {
 
             <div className="space-y-6">
               {admissionRounds.map((round) => (
-                <article key={round.title} className="rounded-[2rem] border border-border/70 bg-card/90 shadow-large p-6 lg:p-8">
+                <article key={round.title} className="rounded-[2rem] border border-border/70 bg-card/90  p-6 lg:p-8">
                   <div className="flex flex-col gap-2 mb-4">
                     <span className="text-xs font-semibold text-primary uppercase tracking-[0.35em]">{round.subheading}</span>
                     <h3 className="text-2xl font-bold text-foreground">{round.title}</h3>
@@ -319,22 +319,22 @@ const Admissions = () => {
       <section className="py-16 lg:py-24 bg-muted/40">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] items-center">
-            <div className="rounded-[2.5rem] bg-gradient-hero p-10 text-center lg:text-left shadow-large text-primary-foreground">
+            <div className=" section-navy p-10 text-center lg:text-left  text-primary-foreground">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">Career Assistance & Placement Support</h2>
               <p className="text-lg text-primary-foreground/90 max-w-xl mx-auto lg:mx-0">
                 Dedicated mentors guide you through resume building, mock interviews, and partner-led placement
                 opportunities anchored by CAA&apos;s network.
               </p>
             </div>
-            <Card className="shadow-large border border-border/70 rounded-[2.25rem]">
+            <Card className="border border-border/70 rounded-sm">
               <CardContent className="p-6 lg:p-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {careerSupport.map((item, index) => (
                     <div
                       key={item}
-                      className="flex items-start gap-4 rounded-2xl border border-border/80 p-4 hover:border-primary/40 transition-colors bg-muted/20"
+                      className="flex items-start gap-4 rounded-sm border border-border/80 p-4 hover:border-primary/40 transition-colors bg-muted/20"
                     >
-                      <div className="h-10 w-10 rounded-full bg-gradient-primary text-primary-foreground flex items-center justify-center font-semibold">
+                      <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
                         {index + 1}
                       </div>
                       <p className="text-muted-foreground text-sm">{item}</p>
@@ -348,7 +348,7 @@ const Admissions = () => {
       </section>
 
       {/* Fees Structure */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8 space-y-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">Fees Structure & Refund Policy</h2>
@@ -357,7 +357,7 @@ const Admissions = () => {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[2.5rem] border border-border/70 bg-card/90 shadow-large">
+          <div className="overflow-hidden  border border-border/70 bg-card/90 ">
             <table className="w-full text-left text-sm sm:text-base">
               <thead className="bg-muted/60 text-muted-foreground uppercase tracking-wide text-xs">
                 <tr>
@@ -415,7 +415,7 @@ const Admissions = () => {
           </div>
 
           <div className="flex justify-center">
-            <div className="rounded-2xl border border-border/70 bg-card/95 shadow-soft overflow-hidden max-w-2xl w-full">
+            <div className="rounded-sm border border-border/70 bg-card/95 shadow-soft overflow-hidden max-w-2xl w-full">
               <div className="px-5 py-4 border-b border-border/60 bg-muted/50">
                 <h4 className="text-lg font-semibold text-foreground text-center uppercase">REFUND POLICY</h4>
               </div>
@@ -443,12 +443,12 @@ const Admissions = () => {
       {/* CTA Section */}
       {/* <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="bg-gradient-hero rounded-2xl p-8 lg:p-12 text-center shadow-large animate-scale-in">
+          <div className="section-navy rounded-sm p-8 lg:p-12 text-center  animate-fade-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">Ready to Apply?</h2>
             <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
               Don&apos;t miss this opportunity! Apply now!
             </p>
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 shadow-large">
+            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 ">
               <a
                 href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"
                 target="_blank"
@@ -463,11 +463,11 @@ const Admissions = () => {
       <section className="py-16 lg:py-24">
   <div className="container mx-auto px-4 lg:px-8">
     <div className="
-      rounded-2xl 
+      rounded-sm 
       p-8 lg:p-12 
       text-center 
-      shadow-large 
-      animate-scale-in
+       
+      animate-fade-up
       bg-gradient-to-br 
 from-purple-600 
 via-indigo-600 
@@ -485,7 +485,7 @@ to-violet-600
       <Button 
         asChild 
         size="lg" 
-        className="bg-white text-primary hover:bg-white/90 shadow-large"
+        className="bg-white text-primary hover:bg-white/90 "
       >
         <a
           href="https://admission.futurense.com/?program=IITGPGD&gmid=KN462"

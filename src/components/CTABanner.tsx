@@ -23,28 +23,21 @@ const resolveVariant = (variant?: CTAButton["variant"]): CTAStyleVariant => {
     case "secondary":
       return "ctaOnDark";
     default:
-      return "cta";
+      return "ctaOnDark";
   }
 };
 
 const CTABanner = ({ title, description, buttons, className = "" }: CTABannerProps) => {
   return (
-    <div className={`bg-gradient-hero rounded-2xl p-8 lg:p-12 text-center shadow-large ${className}`}>
-      <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-        {title}
-      </h2>
-      <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+    <div className={cnSection(className)}>
+      <p className="eyebrow-light mb-3">Admissions</p>
+      <h2 className="font-serif text-2xl lg:text-3xl font-semibold text-white mb-4">{title}</h2>
+      <p className="text-base lg:text-lg text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
         {description}
       </p>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-3">
         {buttons.map((button, index) => (
-          <Button
-            key={index}
-            asChild
-            size="lg"
-            variant={resolveVariant(button.variant)}
-            className="rounded-full px-8"
-          >
+          <Button key={index} asChild size="lg" variant={resolveVariant(button.variant)}>
             <Link to={button.href}>{button.text}</Link>
           </Button>
         ))}
@@ -52,5 +45,9 @@ const CTABanner = ({ title, description, buttons, className = "" }: CTABannerPro
     </div>
   );
 };
+
+function cnSection(className: string) {
+  return `section-navy border border-primary/20 px-6 py-10 lg:px-12 lg:py-14 text-center ${className}`;
+}
 
 export default CTABanner;

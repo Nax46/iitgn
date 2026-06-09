@@ -26,7 +26,7 @@ const missions = [
     icon: <Award className="w-6 h-6" />,
     title: "Accelerate Talent for Future Technologies",
     description:
-      "Develop immediately deployable learners for next-generation fields such as AI, Generative AI, Cloud Engineering, Data Science, and Intelligent Automation, ensuring they are industry-ready from day one.",
+      "Develop immediately deployable learners for next-generation fields such as AI, Generative AI, Agentic AI, and Intelligent Automation, ensuring they are industry-ready from day one.",
   },
   {
     icon: <Users className="w-6 h-6" />,
@@ -67,7 +67,7 @@ const whyChooseUs = [
   {
     title: "Emerging Technology Specialization",
     description:
-      "Deep focus on Generative AI, Agentic AI, LLMs, Cloud-Native Development, MLOps, and Data Engineering.",
+      "Deep focus on Generative AI, Agentic AI, LLMs, multi-agent systems, MLOps, and production AI engineering.",
   },
   {
     title: "Residential Immersion",
@@ -116,17 +116,17 @@ const About = () => {
       {/* -------------------------------------------------------------------- */}
       {/* ⭐ ENHANCED HERO SECTION ⭐ */}
       {/* -------------------------------------------------------------------- */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-subtle overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.1),transparent_50%)]" />
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 section-muted border-b border-border overflow-hidden">
         <div className="container relative mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-8 shadow-large">
-              <Building2 className="w-10 h-10 text-primary-foreground" />
+          <div className="max-w-4xl mx-auto text-center animate-fade-up">
+            <p className="eyebrow mb-4">Institutional Profile</p>
+            <div className="icon-box mx-auto mb-6">
+              <Building2 className="w-5 h-5" />
             </div>
 
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-display-md mb-5">
               About{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 IIT Gandhinagar Competency Development Foundation
               </span>
             </h1>
@@ -145,7 +145,7 @@ const About = () => {
       {/* -------------------------------------------------------------------- */}
       <section className="py-16 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <Card className="max-w-4xl mx-auto border-2 shadow-large bg-card/50 backdrop-blur-sm">
+          <Card className="max-w-4xl mx-auto border bg-card ">
             <CardContent className="p-8 lg:p-12">
               <div className="space-y-6 text-base lg:text-lg leading-relaxed text-muted-foreground">
                 <p>
@@ -183,7 +183,7 @@ const About = () => {
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Messages from{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 Chairman, Director and CEO
               </span>
             </h2>
@@ -194,7 +194,7 @@ const About = () => {
 
           <div className="max-w-4xl mx-auto">
   {/* Director Video */}
-  <Card className="group shadow-large overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30">
+  <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30">
     <div className="relative">
       <CardContent className="p-0 aspect-video rounded-t-lg overflow-hidden">
         <iframe
@@ -214,7 +214,7 @@ const About = () => {
       </section>
 
       {/* Videos */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
@@ -223,7 +223,7 @@ const About = () => {
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Experience{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 IITGN
               </span>
             </h2>
@@ -234,7 +234,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {/* Campus Tour */}
-            <Card className="group shadow-large overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
+            <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
               <div className="relative">
                 <CardContent className="p-0 aspect-video rounded-t-lg overflow-hidden">
                   <iframe
@@ -244,7 +244,7 @@ const About = () => {
                     title="IIT Gandhinagar Campus Tour"
                   ></iframe>
                 </CardContent>
-                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-4 right-4 bg-black/60  rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Eye className="w-4 h-4 text-white" />
                 </div>
               </div>
@@ -259,7 +259,7 @@ const About = () => {
             </Card>
 
             {/* Student Life */}
-            <Card className="group shadow-large overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
+            <Card className="group  overflow-hidden hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 hover:-translate-y-1">
               <div className="relative">
                 <CardContent className="p-0 aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center rounded-t-lg">
                   <div className="text-center p-8">
@@ -289,12 +289,12 @@ const About = () => {
 
           {/* Vision */}
           <div className="text-center mb-16 lg:mb-20">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-6 shadow-large">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
               <Eye className="w-10 h-10 text-primary-foreground" />
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Our Vision</h2>
 
-            <Card className="max-w-3xl mx-auto border-2 shadow-large bg-card/80 backdrop-blur-sm">
+            <Card className="max-w-3xl mx-auto border bg-card ">
               <CardContent className="p-8 lg:p-10">
                 <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
                   To create a globally recognized platform for competency-based
@@ -306,7 +306,7 @@ const About = () => {
 
           {/* Mission */}
           <div className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-6 shadow-large">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
               <Rocket className="w-10 h-10 text-primary-foreground" />
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -321,11 +321,11 @@ const About = () => {
             {missions.map((mission, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/30 bg-card/80 backdrop-blur-sm"
+                className="group card-interactive border-2 hover:border-primary/30 bg-card "
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6 lg:p-8">
-                  <div className="w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center mb-5 shadow-soft group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mb-5 shadow-soft transition-colors">
                     <div className="text-primary-foreground">{mission.icon}</div>
                   </div>
                   <h3 className="font-bold text-foreground mb-3 text-lg">
@@ -340,7 +340,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-semibold mb-4">
@@ -349,7 +349,7 @@ const About = () => {
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Why Choose CAA at{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 IITGN?
               </span>
             </h2>
@@ -362,11 +362,11 @@ const About = () => {
             {whyChooseUs.map((reason, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/30 bg-card/80 backdrop-blur-sm"
+                className="group card-interactive border-2 hover:border-primary/30 bg-card "
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6 lg:p-8">
-                  <div className="w-12 h-12 bg-gradient-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gradient-primary shadow-soft group-hover:scale-110 transition-all">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary shadow-soft transition-colors">
                     <Zap className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
                   </div>
                   <h3 className="font-bold text-foreground mb-3 text-lg">
@@ -395,7 +395,7 @@ const About = () => {
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               The{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-secondary">
                 IIT Advantage
               </span>
             </h2>
@@ -410,10 +410,10 @@ const About = () => {
               {advantageHighlights.map((highlight, index) => (
                 <div
                   key={highlight.title}
-                  className="group flex items-start gap-4 rounded-2xl border-2 border-border/80 bg-card/80 backdrop-blur-sm p-5 lg:p-6 shadow-soft hover:shadow-large hover:border-primary/30 transition-all hover:-translate-y-1"
+                  className="group flex items-start gap-4 rounded-sm border-2 border-border/80 bg-card  p-5 lg:p-6 border-border hover:border-secondary/40 transition-colors"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-gradient-primary group-hover:scale-110 transition-all shadow-soft">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors shadow-soft">
                     <div className="group-hover:text-primary-foreground">{highlight.icon}</div>
                   </div>
 
@@ -426,7 +426,7 @@ const About = () => {
             </div>
 
             {/* Right */}
-            <div className="rounded-2xl overflow-hidden shadow-xl border-2 border-border/50 hover:border-primary/30 transition-all">
+            <div className="rounded-sm overflow-hidden shadow-xl border-2 border-border/50 hover:border-primary/30 transition-all">
               <img
                 src="/images/IIT.avif"
                 alt="IIT Gandhinagar Classroom"
@@ -439,17 +439,17 @@ const About = () => {
       </section>
 
       {/* Commitment */}
-      <section className="py-16 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 lg:py-24 section-muted border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-6 shadow-large">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-sm mb-6 ">
                 <Heart className="w-10 h-10 text-primary-foreground" />
               </div>
 
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Our Commitment to{" "}
-                <span className="bg-gradient-primary bg-clip-text text-transparent">
+                <span className="text-secondary">
                   Excellence
                 </span>
               </h2>
@@ -458,7 +458,7 @@ const About = () => {
               </p>
             </div>
 
-            <Card className="shadow-large border-2 bg-card/80 backdrop-blur-sm">
+            <Card className="border-2 bg-card ">
               <CardContent className="p-8 lg:p-10">
                 <div className="space-y-3 lg:space-y-4">
                   {[
@@ -490,10 +490,10 @@ const About = () => {
                   ].map((commitment, index) => (
                     <div
                       key={index}
-                      className="group flex items-start gap-4 p-5 lg:p-6 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/30 transition-all hover:shadow-md bg-card/50"
+                      className="group flex items-start gap-4 p-5 lg:p-6 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/30 transition-all hover:shadow-md bg-card"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center text-primary-foreground group-hover:scale-110 transition-transform shadow-soft flex-shrink-0">
+                      <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-primary-foreground transition-colors shadow-soft flex-shrink-0">
                         {commitment.icon}
                       </div>
 

@@ -36,144 +36,120 @@ const Header = () => {
     <>
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity md:hidden"
+          className="fixed inset-0 z-40 bg-black/30 md:hidden"
           aria-hidden="true"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
 
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
-      <div className="container relative mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center group -ml-3 sm:-ml-5 md:-ml-6 lg:-ml-7 flex-shrink-0 hover:no-underline focus-visible:no-underline"
-          >
-            <div className="flex items-center">
-              <div className="flex items-center gap-1.5 sm:gap-2 relative -left-1 sm:-left-1.5 pl-1 sm:pl-1.5">
-                {/* Left Circle Logo */}
-                <div
-                  className="w-10 h-10 sm:w-[52px] sm:h-[52px] md:w-[60px] md:h-[60px] lg:w-[66px] lg:h-[66px] rounded-full bg-white shadow-soft group-hover:shadow-medium transition-all duration-300 overflow-hidden flex items-center justify-center"
-                >
-                  <img
-                    src="/logo.png"
-                    alt="CDF icon"
-                    className="object-contain w-[72%] h-[72%]"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Divider */}
-                <div className="hidden sm:block w-px h-6 bg-border/40" />
-
-                {/* Right Circle Logo */}
-                <div
-                  className="w-10 h-10 sm:w-[52px] sm:h-[52px] md:w-[60px] md:h-[60px] lg:w-[66px] lg:h-[66px] rounded-full bg-white shadow-soft group-hover:shadow-medium transition-all duration-300 overflow-hidden flex items-center justify-center"
-                >
-                  <img
-                    src="/logo2.png"
-                    alt="IIT Gandhinagar logo"
-                    className="object-contain w-[72%] h-[72%]"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* TEXT GROUP */}
-              <div className="ml-3 sm:ml-4 flex flex-col justify-center leading-tight font-sans">
-                <span className="text-base sm:text-lg md:text-xl font-semibold tracking-tight text-foreground">
-                  IITGN CDF
-                </span>
-                <span className="text-[0.70rem] sm:text-xs md:text-sm font-medium tracking-tight text-muted-foreground">
-                  Competency Development
-                </span>
-                <span className="text-[0.70rem] sm:text-xs md:text-sm font-medium tracking-tight text-muted-foreground">
-                  Foundation
-                </span>
-              </div>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background hover:no-underline focus-visible:no-underline ${
-                  isActive(link.path)
-                    ? "bg-gradient-primary text-primary-foreground shadow-soft ring-1 ring-primary/40 hover:text-primary-foreground hover:brightness-[1.08]"
-                    : "text-foreground/80 hover:bg-primary/10 hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              to="/admissions"
-              className={cn(
-                buttonVariants({ variant: "cta", size: "lg" }),
-                "ml-4 hidden rounded-full px-6 py-2 md:inline-flex",
-              )}
-            >
-              Apply Now
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:bg-muted rounded-lg transition-colors"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
-          >
-            <span className="sr-only">Toggle navigation</span>
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+      <header className="sticky top-0 z-50 border-b-2 border-primary/10 bg-background">
+        <div className="border-b border-border/80 bg-muted/40">
+          <div className="container mx-auto px-4 lg:px-8">
+            <p className="py-1.5 text-center text-[0.7rem] sm:text-xs text-muted-foreground tracking-wide">
+              Indian Institute of Technology Gandhinagar · Competency Development Foundation
+            </p>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <nav
-          id="mobile-navigation"
-          className={`md:hidden absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 origin-top space-y-2 rounded-3xl border border-border/60 bg-background/95 p-4 shadow-large transition-all duration-300 ${
-            isMenuOpen
-              ? "pointer-events-auto opacity-100 translate-y-0"
-              : "pointer-events-none opacity-0 -translate-y-2"
-          }`}
-          aria-hidden={!isMenuOpen}
-        >
-          {navLinks.map((link) => (
+        <div className="container relative mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-between gap-4 h-[4.5rem] lg:h-20">
             <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setIsMenuOpen(false)}
-              className={`block rounded-2xl px-4 py-3 text-base font-semibold transition hover:no-underline focus-visible:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                isActive(link.path)
-                  ? "bg-gradient-primary text-primary-foreground shadow-soft ring-1 ring-primary/30 hover:text-primary-foreground hover:brightness-[1.08]"
-                  : "text-foreground/80 hover:bg-primary/10 hover:text-primary"
-              }`}
+              to="/"
+              className="flex items-center gap-3 min-w-0 flex-shrink hover:no-underline focus-visible:no-underline"
             >
-              {link.label}
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="h-11 w-11 sm:h-12 sm:w-12 border border-border bg-white flex items-center justify-center">
+                  <img src="/logo.png" alt="CDF" className="h-[70%] w-[70%] object-contain" loading="lazy" />
+                </div>
+                <div className="hidden sm:block h-8 w-px bg-border" aria-hidden="true" />
+                <div className="h-11 w-11 sm:h-12 sm:w-12 border border-border bg-white flex items-center justify-center">
+                  <img src="/logo2.png" alt="IIT Gandhinagar" className="h-[70%] w-[70%] object-contain" loading="lazy" />
+                </div>
+              </div>
+
+              <div className="min-w-0 leading-tight">
+                <span className="block font-serif text-base sm:text-lg font-semibold text-primary truncate">
+                  IITGN CDF
+                </span>
+                <span className="block text-[0.65rem] sm:text-xs text-muted-foreground truncate">
+                  Competency Development Foundation
+                </span>
+              </div>
             </Link>
-          ))}
-          <Button
-            asChild
-            size="lg"
-            variant="cta"
-            className="w-full rounded-2xl py-3 text-base font-semibold"
+
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={cn("nav-link", isActive(link.path) && "nav-link-active")}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                to="/admissions"
+                className={cn(buttonVariants({ variant: "cta", size: "default" }), "ml-4")}
+              >
+                Apply Now
+              </Link>
+            </nav>
+
+            <div className="flex items-center gap-2 lg:hidden">
+              <Link
+                to="/admissions"
+                className={cn(buttonVariants({ variant: "cta", size: "sm" }), "hidden min-[400px]:inline-flex")}
+              >
+                Apply
+              </Link>
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 text-foreground border border-border rounded-sm hover:bg-muted transition-colors"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+              >
+                <span className="sr-only">Toggle navigation</span>
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+
+          <nav
+            id="mobile-navigation"
+            className={cn(
+              "lg:hidden border-t border-border bg-background overflow-hidden transition-[max-height,opacity] duration-300 ease-out",
+              isMenuOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0 pointer-events-none",
+            )}
+            aria-hidden={!isMenuOpen}
           >
-            <Link to="/admissions" onClick={() => setIsMenuOpen(false)}>
-              Apply Now
-            </Link>
-          </Button>
-        </nav>
-      </div>
-    </header>
+            <div className="py-3 space-y-0.5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "block px-2 py-2.5 text-sm font-medium border-l-2 transition-colors hover:no-underline",
+                    isActive(link.path)
+                      ? "border-accent text-primary bg-muted/50 pl-3"
+                      : "border-transparent text-foreground/80 hover:text-primary hover:bg-muted/30",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="pt-2 px-2">
+                <Button asChild variant="cta" className="w-full">
+                  <Link to="/admissions" onClick={() => setIsMenuOpen(false)}>
+                    Apply Now
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
     </>
   );
 };

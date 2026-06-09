@@ -1,7 +1,8 @@
 import { FormEvent, useState } from "react";
-import { FileText, Code, MessageSquare, Calculator, Award, Users, Briefcase } from "lucide-react";
+import { FileText, Code, MessageSquare, Calculator, Award, Users } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import styles from "./Placements.module.css";
@@ -44,38 +45,20 @@ const careerSupport = [
   },
 ];
 
-const careerOutcomes = [
-  {
-    program: "PG Diploma in AI-ML & Agentic AI Engineering",
-    roles: [
-      "AI Engineer / Machine Learning Engineer",
-      "Generative AI Engineer",
-      "Prompt Engineering Specialist",
-      "MLOps Engineer",
-      "AI Consultant / GenAI Consultant",
-    ],
-  },
-  {
-    program: "PG Diploma in AI Driven Cloud based Software Development",
-    roles: [
-      "Full-Stack Developer",
-      "Backend Engineer (Java / Spring Boot)",
-      "Frontend Engineer (React / Next.js)",
-      "DevOps Engineer",
-      "Software Development Engineer (SDE)",
-    ],
-  },
-  {
-    program: "PG Diploma in GenAI-Powered Data Science & Engineering",
-    roles: [
-      "Data Engineer",
-      "Data Scientist",
-      "Cloud Data Engineer",
-      "Analytics Engineer",
-      "MLOps Engineer",
-    ],
-  },
-];
+const careerOutcome = {
+  program: "PG Diploma in AI-ML & Agentic AI Engineering",
+  description:
+    "Graduates are prepared for high-demand roles across the AI-ML and Agentic AI ecosystem — from building intelligent agents to deploying production ML systems.",
+  roles: [
+    "AI Engineer / Machine Learning Engineer",
+    "Generative AI Engineer",
+    "Prompt Engineering Specialist",
+    "MLOps Engineer",
+    "AI Consultant / GenAI Consultant",
+    "Agentic AI Systems Developer",
+    "LLM Application Engineer",
+  ],
+};
 
 const PARTNER_API_TIMEOUT = 12000;
 
@@ -188,20 +171,13 @@ const Placements = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <Briefcase className="w-16 h-16 text-primary mx-auto mb-6" />
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
-              Career Support & <span className="bg-gradient-primary bg-clip-text text-transparent">Placement Assistance</span>
-            </h1>
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              We are committed to your career transformation. Our comprehensive career support services delivered through our operating partner M/s. Futurense Technologies Pvt. Ltd. ensure you graduate not just with technical skills, but with the confidence, network, and readiness to succeed in competitive job markets.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        eyebrow="Career Services"
+        title="Career Support &"
+        highlight="Placement Assistance"
+        description="Comprehensive career support delivered through our operating partner, M/s. Futurense Technologies Pvt. Ltd. — ensuring you graduate with technical depth, professional confidence, and industry readiness."
+        align="left"
+      />
 
       {/* Career Support Framework */}
       <section className="py-16 lg:py-24">
@@ -219,13 +195,11 @@ const Placements = () => {
             {careerSupport.map((service, index) => (
               <Card 
                 key={index}
-                className={`hover:shadow-large transition-all duration-300 animate-fade-in ${styles[`delay${index * 100}`]}`}
+                className={`card-interactive animate-fade-up ${styles[`delay${index * 100}`]}`}
               >
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4">
-                    <div className="text-primary-foreground">{service.icon}</div>
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">{service.title}</h3>
+                  <div className="icon-box-secondary mb-4">{service.icon}</div>
+                  <h3 className="font-serif font-semibold text-foreground mb-2">{service.title}</h3>
                   <p className="text-muted-foreground text-sm">{service.description}</p>
                 </CardContent>
               </Card>
@@ -258,36 +232,46 @@ const Placements = () => {
 
 
       {/* Career Outcomes */}
-      <section className="py-16 lg:py-24">
+      <section className="section-spacing">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12 text-center">
-              Career Outcomes by Program
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {careerOutcomes.map((outcome, index) => (
-                <Card 
-                  key={index}
-                  className="hover:shadow-large transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-foreground mb-4 text-lg">{outcome.program}</h3>
-                    
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-foreground mb-2">Typical Job Roles:</h4>
-                      <ul className="space-y-1">
-                        {outcome.roles.map((role, idx) => (
-                          <li key={idx} className="text-sm text-muted-foreground flex items-start space-x-2">
-                            <span className="text-primary">•</span>
-                            <span>{role}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10 lg:mb-12 animate-fade-up">
+              <h2 className="text-display-sm text-foreground mb-4">
+                Career Outcomes
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Pathways into the AI-ML and Agentic AI job market through rigorous training and industry mentorship.
+              </p>
             </div>
+
+            <Card className="card-elevated overflow-hidden animate-fade-up animation-delay-100">
+              <CardContent className="p-8 lg:p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary mb-3">
+                  Our Program
+                </p>
+                <h3 className="text-heading-md text-foreground mb-4">
+                  {careerOutcome.program}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                  {careerOutcome.description}
+                </p>
+
+                <h4 className="text-sm font-semibold text-foreground mb-4">
+                  Typical Job Roles
+                </h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {careerOutcome.roles.map((role) => (
+                    <li
+                      key={role}
+                      className="flex items-center gap-2.5 rounded-xl border border-border/60 bg-muted/30 px-4 py-3 text-sm text-muted-foreground transition-colors duration-300 hover:bg-muted/50 hover:border-primary/20"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden="true" />
+                      <span>{role}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -296,7 +280,7 @@ const Placements = () => {
       <section className="py-16 lg:py-24 bg-muted/50">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-large">
+            <Card className="">
               <CardContent className="p-8">
                 <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 text-center">
                   Our Placement Commitment
@@ -313,8 +297,8 @@ const Placements = () => {
                     "Confidence Building – Mock interviews and feedback until you're ready",
                   ].map((commitment, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground flex-shrink-0 mt-1">
-                        <span className="text-xs font-bold">✓</span>
+                      <div className="w-5 h-5 rounded-sm bg-primary flex items-center justify-center text-primary-foreground flex-shrink-0 mt-0.5">
+                        <span className="text-[10px] font-bold">✓</span>
                       </div>
                       <p className="text-muted-foreground">{commitment}</p>
                     </div>
@@ -333,7 +317,7 @@ const Placements = () => {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-large border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5">
+            <Card className="card-panel border-t-4 border-t-accent">
               <CardContent className="p-8">
                 <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 text-center">
                   Eligibility Criteria for Placement
@@ -349,7 +333,7 @@ const Placements = () => {
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
                       <span className="text-xs font-bold">•</span>
                     </div>
-                    <p className="text-foreground font-medium">Throughout 90%+ Attendance</p>
+                    <p className="text-foreground font-medium">90%+ Attendance — Consistent attendance required</p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-1">
@@ -377,7 +361,7 @@ const Placements = () => {
             <p className="text-lg text-muted-foreground mb-12 text-center">
               Are you a freelancer or professional looking to contribute to our programs? Join our network of industry experts.
             </p>
-            <Card className="shadow-large">
+            <Card className="">
               <CardContent className="p-8">
                 <form className="space-y-6" onSubmit={handlePartnerSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -449,7 +433,7 @@ const Placements = () => {
                   <Button
                     type="submit"
                     variant="cta"
-                    className="w-full rounded-full py-3 text-sm font-semibold"
+                    className="w-full py-3 text-sm font-semibold"
                     disabled={isSubmittingPartnerForm}
                   >
                     {isSubmittingPartnerForm ? "Submitting..." : "Submit Application"}
@@ -457,7 +441,7 @@ const Placements = () => {
                   {partnerFormFeedback && (
                     <p
                       className={`text-sm text-center ${
-                        partnerFormFeedback.type === "success" ? "text-emerald-600" : "text-destructive"
+                        partnerFormFeedback.type === "success" ? "text-emerald-600 dark:text-emerald-400" : "text-destructive"
                       }`}
                       role="status"
                       aria-live="assertive"

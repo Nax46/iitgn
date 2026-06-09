@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Programs from "./pages/Programs";
 import Admissions from "./pages/Admissions";
@@ -14,9 +14,7 @@ import Placements from "./pages/Placements";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import GenAIPoweredDataScience from "./pages/GenAIPoweredDataScience";
 import GenAIAgenticAi from "./pages/GenAIAgenticAi";
-import GenAIsoftwarecloud from "./pages/GenAIsoftwarecloud";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const queryClient = new QueryClient();
@@ -57,10 +55,9 @@ const App = () => (
           <Route path="/placements" element={<Placements />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/gen-ai-data-science" element={<GenAIPoweredDataScience />} />
           <Route path="/gen-ai-agentic-aiml" element={<GenAIAgenticAi />} />
-          <Route path="/gen-ai-software-cloud" element={<GenAIsoftwarecloud />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/gen-ai-data-science" element={<Navigate to="/gen-ai-agentic-aiml" replace />} />
+          <Route path="/gen-ai-software-cloud" element={<Navigate to="/gen-ai-agentic-aiml" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ScrollToTopButton />

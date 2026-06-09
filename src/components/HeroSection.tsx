@@ -9,6 +9,7 @@ type HeroSectionProps = {
   align?: "center" | "left";
   className?: string;
   backgroundImage?: string;
+  eyebrow?: string;
 };
 
 const HeroSection = ({
@@ -19,12 +20,13 @@ const HeroSection = ({
   align = "center",
   className,
   backgroundImage,
+  eyebrow,
 }: HeroSectionProps) => {
   return (
     <section
       className={cn(
-        "relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle",
-        className
+        "relative border-b border-border pt-28 pb-12 lg:pt-36 lg:pb-16 section-muted",
+        className,
       )}
     >
       {backgroundImage && (
@@ -34,46 +36,38 @@ const HeroSection = ({
             alt=""
             aria-hidden="true"
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-hero opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+          <div className="absolute inset-0 bg-background/85" aria-hidden="true" />
         </>
       )}
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8 relative">
         <div
           className={cn(
-            "relative max-w-4xl mx-auto animate-fade-in-up",
-            align === "center" ? "text-center" : "text-left"
+            "max-w-3xl animate-fade-up",
+            align === "center" ? "mx-auto text-center" : "text-left",
           )}
         >
-          {/* ICON */}
+          {eyebrow && <p className={cn("eyebrow mb-3", align === "center" && "text-center")}>{eyebrow}</p>}
+
           {icon && (
-            <div
-              className={cn(
-                "mb-6",
-                align === "center" ? "mx-auto" : ""
-              )}
-            >
+            <div className={cn("mb-5 text-secondary", align === "center" && "flex justify-center")}>
               {icon}
             </div>
           )}
 
-          {/* TITLE */}
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight">
-            {title}{" "}
+          <h1 className="text-display-md mb-4">
+            {title}
             {highlight && (
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                {highlight}
-              </span>
+              <>
+                {" "}
+                <span className="text-secondary">{highlight}</span>
+              </>
             )}
           </h1>
 
-          {/* DESCRIPTION */}
           {description && (
-            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              {description}
-            </p>
+            <div className="text-lead max-w-2xl mx-auto">{description}</div>
           )}
         </div>
       </div>
